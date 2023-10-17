@@ -6,6 +6,16 @@ const UserSchema = new Schema({
     required: true,
     trim: true
   },
+  correo: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true,
+    trim: true
+  },
   numeroDocumento: {
     type: Number,
     required: true
@@ -26,7 +36,11 @@ const UserSchema = new Schema({
         type: String
       }
     }]
-  }]
+  }],
+  estado: {
+    type: Boolean,
+    default: true
+  }
 });
 
 export default model('usuarios', UserSchema);

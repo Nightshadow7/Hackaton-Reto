@@ -1,7 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { logErrors, errorHandler, isBoomError } from "./middlewares/errorHandler";
+import { mongooseConnection } from "./config/mongoose.js";
+import { mongoClientConnection } from "./config/mongoClient.js";
+import { logErrors, errorHandler, isBoomError } from "./middlewares/errorHandler.js";
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -14,6 +16,8 @@ app.use(cors({
   optionsSuccessStatus: 200,
 }));
 
+mongoClientConnection();
+mongooseConnection();
 // aquí las rutas
 app.use(logErrors)
 app.use(isBoomError)
