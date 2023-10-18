@@ -10,6 +10,7 @@ import Usuarios from "../models/Usuarios.js";
 import Form from "./../models/form.js"
 import fs from 'fs'
 
+
 const qrs = db.collection("qrs");
 
 export const getAll = async (req, res, next) => {
@@ -31,6 +32,16 @@ export const getOne = async (req, res, next) => {
     next(err);
   };
 };
+
+export const findQRByUser = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const qrs = await Qr.find({usuario: userId});
+    res.status(200).json(qrs);
+  } catch (err) {
+    next(err);
+  }
+}
 
 export const createQr = async (req, res, next) => {
   try {
