@@ -14,7 +14,8 @@ export default function QRsDisponibles() {
     }
     axios
       .get(`http://localhost:7000/api/qrs/byUser/${usuario._id}`)
-      .then(({ data }) => setQrsPerUser(data));
+      .then(({ data }) => setQrsPerUser(data))
+      .catch(err => console.log(err));
   }, []);
   const navigate = useNavigate();
   return (

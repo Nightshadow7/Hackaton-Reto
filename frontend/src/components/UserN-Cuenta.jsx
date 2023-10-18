@@ -20,9 +20,8 @@ function UserN_Cuenta() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/Ingreso");
+      return navigate("/Ingreso");
     }
-
     const usuario = JSON.parse(localStorage.getItem("usuario"));
     setAccountsData(usuario.cuentasAhorro);
   }, []);

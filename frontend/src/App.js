@@ -9,6 +9,7 @@ import "./app.css"
 import Pay from './components/pay';
 import QRsDisponibles from './components/QRsDisponibles';
 import Formulario from './components/Formulario';
+import AdminDashboard from './components/AdminDashboard';
 
 
 function isUserLoggedIn() {
@@ -36,6 +37,7 @@ function App() {
         <Route path='/edit' element={<EditPlantilla />} />
         <Route path="/UserCuenta" element={<UserN_Cuenta />} />
         <Route path="/Formulario" element={<Formulario />} />
+        <Route path="/AdminDashboard" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );

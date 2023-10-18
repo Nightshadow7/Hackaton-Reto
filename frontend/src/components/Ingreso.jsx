@@ -51,7 +51,10 @@ function Ingreso() {
       if (response.data.usuario) {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("usuario", JSON.stringify(response.data.usuario));
-  
+        
+        // Envía al admin a un dashboard diferente
+        if(response.data.usuario.rol == "ENTIDAD") return navigate('/AdminDashboard');
+
         const imagenBase64 = response.data.usuario.imagen;
         localStorage.setItem("imagen", imagenBase64);
   
