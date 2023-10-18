@@ -42,7 +42,7 @@ function Ingreso() {
       });
       console.log(response.data);
       if (response.data.usuario) {
-        navigate("/home");
+        navigate("/UserCuenta");
       } else {
         new swal({
           icon: "error",
