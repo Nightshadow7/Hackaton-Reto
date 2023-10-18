@@ -45,14 +45,15 @@ function UserN_Cuenta() {
             <summary className="user-logo"> 
             <img src={image} className="userImage" alt="User" />
             </ summary>
-            <div className="logout-button">
-                
-          <a onClick={handleLogout}>Cerrar Sesión</a>
-            </div>
+          
             </details>
 
           </div>
-          
+          <div className="user-info">
+            <h2 className="white">{JSON.parse(localStorage.getItem("usuario")).rol}</h2>
+            <p className="white">User: {JSON.parse(localStorage.getItem("usuario")).nombre}</p>
+            <p className="white">documeto: {JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
+          </div>
         </div>
         {selectedAccount ? (
           <div className="account-details">
@@ -61,7 +62,9 @@ function UserN_Cuenta() {
             <p>Balance: {selectedAccount.saldo}</p>
           </div>
         ) : null}
-        
+        <div className="logout-button">
+          <a onClick={handleLogout}>Cerrar Sesión</a>
+        </div>
         <div className="btn-qr">
           <a onClick={navigateQr}>Códigos QR</a>
         </div>
