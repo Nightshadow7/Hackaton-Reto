@@ -55,28 +55,30 @@ export const createQr = async (req, res, next) => {
         "La plantilla ó el usuario no se encuentra registradas en la DB"
       );
     };
-    console.log(usuarioDB.cuentasAhorro[0].numeroCuenta)
     const cuentaExiste = usuarioDB.cuentasAhorro.some(
       (cuenta) => cuenta.numeroCuenta === cuentaDestino
     );
     if (!cuentaExiste) {
       throw boom.badRequest("La cuenta de destino no existe para este usuario");
     }
-    
-    
+    const datos = {
+      nombre: plantillaDB.nombre,
+      campos: plantillaDB.campos,
+    };
+
+    const QrUrl = `http://localhost:7000/pagos/${usuarioDB}/${cuentaDestino}`
+    const qrData = { url: QrUrl, data: datos };
+
+    const qrDataJSON = JSON.stringify(qrData);
+    const qrCode = await qrcode.toDataURL(qrDataJSON);
 
     const newQr = new Qr({
       plantilla,
       usuario,
       cuentaDestino,
+      imagen: qrCode,
       ...remaining,
     });
-
-    const qrDataJSON = JSON.stringify(newQr);
-
-    const qrCode = await qrcode.toDataURL(qrDataJSON);
-
-    fs.writeFileSync('codigo_qr.png', qrCode);
 
     await newQr.save();
     res.status(200).json({data : newQr , code: qrcode});
