@@ -62,7 +62,7 @@ export const createCuentaAhorros = async (req, res, next) => {
     if (!User)
       throw boom.notFound("Usuario ID no encontrado en la base de datos");
     if (!User.estado) {
-      throw boom.badRequest("El Usuario se encuentra Bloqueado ");
+      throw boom.badRequest("El Usuario se encuentra Bloqueado. Favor contactar con soporte.");
     }
     const data = req.body.cuentasAhorro || [];
     const createdAccounts = [];
@@ -142,14 +142,14 @@ export const createQR = async (req, res, next) => {
 
     const backgroundImagePath = User.qrs.imagen;
 
-    const qr_image = qr.image(JSON.stringify(data), { type: 'png' });
+    const qr_image = qr.image(JSON.stringify(data), { type: "png" });
 
     Jimp.read(backgroundImagePath, (err, background) => {
       if (err) throw err;
 
       const width = background.bitmap.width;
       const height = background.bitmap.height;
-      
+
       Jimp.read(qr_image, (err, qr) => {
         if (err) throw err;
 
@@ -161,7 +161,7 @@ export const createQR = async (req, res, next) => {
 
         background.composite(qr, x, y);
 
-        const qrFileName = 'codigo_qr_con_fondo.png';
+        const qrFileName = "codigo_qr_con_fondo.png";
         background.write(qrFileName, () => {
           res.download(qrFileName);
         });
