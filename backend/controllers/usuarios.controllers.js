@@ -9,6 +9,8 @@ import Jimp from "jimp";
 import imagenDefault from "../middlewares/imagenDefault.js";
 import multer from "multer";
 
+const usuariosDB = db.collection("usuarios");
+
 export const getAll = async (req, res, next) => {
   try {
     const data = await usuarios.find({}).toArray();
@@ -57,27 +59,45 @@ export const createUsuario = async (req, res, next) => {
 
 export const createCuentaAhorros = async (req, res, next) => {
   try {
-    const oid = req.params.id;
-    const User = await Usuario.findById({ _id: oid });
+    const oid = new ObjectId(req.params.id);
+    const User = await Usuario.findById({ _id: req.params.id });
     if (!User)
       throw boom.notFound("Usuario ID no encontrado en la base de datos");
     if (!User.estado) {
-      throw boom.badRequest("El Usuario se encuentra Bloqueado. Favor contactar con soporte.");
+      throw boom.badRequest(
+        "El Usuario se encuentra Bloqueado. Favor contactar con soporte."
+      );
     }
     const data = req.body.cuentasAhorro || [];
     const createdAccounts = [];
     for (const account of data) {
-      const number = generateRandomNumber();
+      let number = account.numeroCuenta
+        ? account.numeroCuenta
+        : generateRandomNumber();
+      //const number = generateRandomNumber();
       const saldo = account.saldo < 1 ? 200000 : account.saldo;
       const newAccount = {
         numeroCuenta: number,
         saldo,
       };
-      User.cuentasAhorro.push(newAccount);
+      // User.cuentasAhorro.push(newAccount);
       createdAccounts.push(newAccount);
     }
-    await User.save();
-    res.status(200).json(createdAccounts);
+    console.log(createdAccounts);
+
+    const actualizado = await Usuario.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $push: {
+          cuentasAhorro: {
+            $each: [...createdAccounts],
+          },
+        },
+      },
+      { new: true }
+    );
+
+    res.status(200).json(actualizado);
   } catch (err) {
     next(err);
   }
