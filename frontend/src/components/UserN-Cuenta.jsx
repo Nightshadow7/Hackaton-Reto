@@ -18,7 +18,6 @@ function UserN_Cuenta() {
   };
 
   useEffect(() => {
-    
     const token = localStorage.getItem("token");
     if (!token) {
       navigate("/Ingreso");
@@ -65,6 +64,9 @@ function UserN_Cuenta() {
         ) : null}
         <div className="logout-button">
           <button onClick={handleLogout}>Cerrar Sesión</button>
+        </div>
+        <div className="qrs-button">
+          <button onClick={navigateQr}>Códigos QR</button>
         </div>
       </div>
       <div className="account-list-scroll">
