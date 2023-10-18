@@ -19,9 +19,9 @@ const qrs = Joi.array().items({
   plantilla: Joi.string().hex().length(24),
   nombre: Joi.string().min(7).max(20),
   cuentaDestino: Joi.number().min(10000000000).max(99999999999),
+  imagen: Joi.string(),
   estado: Joi.boolean().default(true),
 });
-const imagen = Joi.array()
 const estado = Joi.boolean().default(true);
 
 export const getUsuarioSchema = Joi.object({
@@ -58,7 +58,3 @@ export const createMovimientosSchema = Joi.object({
 export const createQRSchema = Joi.object({
   qrs
 });
-
-export const createQRImageSchema = Joi.object({
-  imagen,
-})
