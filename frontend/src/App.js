@@ -5,6 +5,7 @@ import Ingreso from './components/Ingreso.jsx';
 import Home from './components/Home.jsx';
 import Header from './components/sub-componets/Header';
 import "./app.css"
+import Pay from './components/pay';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/Ingreso" element={<Ingreso />} />
         <Route path="/header" element={<Header />} />
         <Route path='/home' element={<UserN_Cuenta />}></Route>
+        <Route path='/pagar' element={<Pay />}></Route>
       </Routes>
     </BrowserRouter>
   );
