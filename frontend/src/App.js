@@ -16,7 +16,6 @@ function App() {
         <Route path="/UserCuenta" element={<UserN_Cuenta />} />
         <Route path="/Ingreso" element={<Ingreso />} />
         <Route path="/header" element={<Header />} />
-        <Route path='/home' element={<UserN_Cuenta />}></Route>
         <Route path='/pagar' element={<Pay />}></Route>
       </Routes>
     </BrowserRouter>

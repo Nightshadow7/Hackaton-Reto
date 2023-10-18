@@ -65,7 +65,7 @@
 
 .user-section {
   flex: 1; /* Ocupa la mitad izquierda de la pantalla */
-  background-color: #f0f0f0; /* Color de fondo de la sección izquierda */
+  background-color: green; /* Color de fondo de la sección izquierda */
   padding: 20px;
 }
 
@@ -99,6 +99,7 @@
 .account-details {
   background-color: #fff; /* Color de fondo del área de detalles de la cuenta */
   padding: 20px;
+  border-radius: 10px;
 }
 
 .account-list {
@@ -161,4 +162,12 @@
   .account-list {
     padding: 10px;
   }
+}
+
+.userImage{
+  height: 100%;
+}
+
+.white{
+  color:white
 }
