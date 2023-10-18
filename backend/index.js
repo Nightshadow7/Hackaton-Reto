@@ -4,6 +4,7 @@ import cors from "cors";
 import { mongooseConnection } from "./config/mongoose.js";
 import { mongoClientConnection } from "./config/mongoClient.js";
 import { logErrors, errorHandler, isBoomError } from "./middlewares/errorHandler.js";
+import router from "./routes/index.js";
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -19,6 +20,7 @@ app.use(cors({
 mongoClientConnection();
 mongooseConnection();
 // aquí las rutas
+app.use('/api', router);
 app.use(logErrors)
 app.use(isBoomError)
 app.use(errorHandler)

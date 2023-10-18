@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcryptjs from "bcryptjs";
 
 const UserSchema = new Schema({
   nombre: {
@@ -45,4 +46,13 @@ const UserSchema = new Schema({
   }
 });
 
-export default model('usuarios', UserSchema);
+UserSchema.statics.encryptPassword = (password) => {
+  const salt = bcryptjs.genSaltSync(10);
+  return bcryptjs.hashSync(password, salt);
+};
+
+UserSchema.statics.comparePassword = (password, receivedPassword) => {
+  return bcryptjs.compareSync(password, receivedPassword);
+};
+
+export default model("usuarios", UserSchema);
