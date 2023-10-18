@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import image from '../resources/header.jpg'
 import './userN-Cuenta.css';
 
 function UserN_Cuenta() {
@@ -25,10 +26,12 @@ function UserN_Cuenta() {
         <div className="user-cuenta-container">
             <div className="user-section">
                 <div className="user-header">
-                    <div className="user-logo">User Logo</div>
+                    <div className="user-logo">
+                        <img src={image} className='userImage'/>
+                    </div>
                     <div className="user-info">
-                        <h2>User Information</h2>
-                        <p>User: John Doe</p>
+                        <h2 className='white'>User Information</h2>
+                        <p className='white'>User: John Doe</p>
                     </div>
                 </div>
                 {selectedAccount ? (
