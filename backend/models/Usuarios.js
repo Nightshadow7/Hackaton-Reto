@@ -61,7 +61,7 @@ const UserSchema = new Schema(
     },
     qrs: [
       {
-        plantilla: {
+        /* plantilla: {
           type: Schema.Types.ObjectId,
           ref: "plantillas",
           required: true,
@@ -77,11 +77,19 @@ const UserSchema = new Schema(
         },
         imagen: {
           type: String,
-        },
+        }, */
         estado: {
           type: Boolean,
           default: true,
         },
+        createdAt: {
+          type: Date,
+          default: new Date()
+        },
+        singleQr: {
+          type: String,
+          required: true
+        }
       },
     ],
     estado: {

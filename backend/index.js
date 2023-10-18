@@ -4,8 +4,9 @@ import cors from "cors";
 import { mongooseConnection } from "./config/mongoose.js";
 import { mongoClientConnection } from "./config/mongoClient.js";
 import { logErrors, errorHandler, isBoomError } from "./middlewares/errorHandler.js";
-import { router as formularioRoutes } from './routes/form.routes.js';
-import { router as formularioDupliRoutes } from './routes/formdupli.routes.js';
+import allRoutes from "./routes/index.js";
+import formularioRoutes from './routes/form.routes.js';
+import formularioDupliRoutes from './routes/formdupli.routes.js';
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -25,7 +26,7 @@ mongooseConnection();
 // Rutas de la aplicación
 app.use('/api/formulario', formularioRoutes);
 app.use('/api/formulario/temp', formularioDupliRoutes);
-
+app.use('/api', allRoutes)
 // Manejo de errores
 app.use(logErrors);
 app.use(isBoomError);

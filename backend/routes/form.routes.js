@@ -12,4 +12,4 @@ router.use(restrictToEntidad);
 router.delete('/:id', formularioController.deleteFormulario);
 router.put('/:id', formularioController.actualizarFormularioTemporal);
 
-export { router };
+export default router;

@@ -5,4 +5,5 @@ const router = express.Router();
 
 router.post('/duplicar/:id', formularioController.duplicarFormulario);  
 router.put('/actualizar/:id', formularioController.actualizarFormularioTemporal); 
-export { router };
+
+export default router ;

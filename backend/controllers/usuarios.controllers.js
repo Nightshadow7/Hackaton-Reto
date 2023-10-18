@@ -1,15 +1,16 @@
 import boom from "@hapi/boom";
 import Usuario from "../models/Usuarios.js";
+import Form from "../models/form.js";
 import { db } from "../config/mongoClient.js";
 import { ObjectId } from "mongodb";
-const usuarios = db.collection("usuarios");
 import generateRandomNumber from "../middlewares/saldoValidator.js";
+import imagenDefault from "../middlewares/imagenDefault.js";
+import QRCode from "qrcode";
 import qr from "qr-image";
 import Jimp from "jimp";
-import imagenDefault from "../middlewares/imagenDefault.js";
 import multer from "multer";
 
-const usuariosDB = db.collection("usuarios");
+const usuarios = db.collection("usuarios");
 
 export const getAll = async (req, res, next) => {
   try {
@@ -144,28 +145,54 @@ export const Image = async (req, res, next) => {
 export const createQR = async (req, res, next) => {
   try {
     const oid = req.params.id;
+    let { precioDefault, descripcion, idCuentaAhorros, idFormulario } = req.body;
     const User = await Usuario.findById({ _id: oid });
+
     if (!User)
       throw boom.notFound("Usuario ID no encontrado en la base de datos");
     if (!User.estado) {
       throw boom.badRequest("El Usuario se encuentra Bloqueado ");
     }
 
+    let formFields = await Form.find({ _id: idFormulario });
     const data = {
       nombre: User.nombre,
-      valor: User.valor,
-      descripcion: User.descripcion,
-      documento: User.documento,
+      numeroDocumento: User.numeroDocumento,
       tipoDocumento: User.tipoDocumento,
-      // nose como ponerlo automatico, ando sin ideas F
+      precioDefault: precioDefault ? precioDefault : null,
+      descripcion,
+      idCuentaAhorros,
+      idFormulario,
+      formFields,
     };
 
-    // datos formularios, datos bancarios del que recibe (número de cuenta y nombres)
+    const generateQR = async (text) => {
+      try {
+        return await QRCode.toDataURL(text);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
+    const myQrCode = await generateQR(JSON.stringify(data));
+    await Usuario.findOneAndUpdate(
+      { _id: oid },
+      {
+        $push: {
+          qrs: {
+            singleQr: myQrCode,
+            createdAt: new Date(),
+          },
+        },
+      },
+      { new: true }
+    );
+
+    res.status(200).json({ result: myQrCode });
+
+    //const qr_image = qr.image(JSON.stringify(data), { type: "png" });
+    /* 
     const backgroundImagePath = User.imagen;
-
-    const qr_image = qr.image(JSON.stringify(data), { type: "png" });
-
     Jimp.read(backgroundImagePath, (err, background) => {
       if (err) throw err;
 
@@ -188,7 +215,8 @@ export const createQR = async (req, res, next) => {
           res.download(qrFileName);
         });
       });
-    });
+
+    }); */
   } catch (error) {
     next(error);
   }

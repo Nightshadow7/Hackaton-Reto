@@ -7,6 +7,7 @@ import upload from "../middlewares/multer.js";
 const router = Router();
 
 router.get("/", service.getAll);
+router.post("/qrcode/:id", service.createQR);
 router.delete("/:id", service.deleteUsuario);
 
 router.get(

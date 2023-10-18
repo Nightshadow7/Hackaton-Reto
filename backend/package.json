@@ -25,6 +25,7 @@
     "qrcode": "^1.5.3"
   },
   "devDependencies": {
+    "@types/qr-image": "^3.2.8",
     "nodemon": "^3.0.1"
   }
 }
