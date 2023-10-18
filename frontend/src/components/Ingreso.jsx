@@ -4,7 +4,8 @@ import "./ingreso.css"
 import logoOne from "../resources/logoComultrasan.png"
 import logoTwo from "../resources/financiera_comultrasan.png"
 import swal from 'sweetalert2/src/sweetalert2.js';
-import "sweetalert2/dist/sweetalert2.css"
+import "sweetalert2/dist/sweetalert2.css";
+
 function Ingreso() {
 
     const [user, setUser] = useState('');
@@ -34,6 +35,7 @@ function Ingreso() {
                     "user": user,
                     "password": password
                 }
+            navigate('/home')
                 console.log(dataJSON)
             } else {
                 new swal({
@@ -97,7 +99,7 @@ return (
                         />
 
                         <div className="blockButtom">
-                            <button type="submit" className="submit">Ingresar</button>
+                            <button type="submit"  className="submit">Ingresar</button>
                         </div>
                     </form>
 
