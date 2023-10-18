@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, NavLink, useNavigate } from 'react-router-dom';
-import Login from './login.jsx';
 import UserN_Cuenta from '../UserN-Cuenta.jsx';
 const Header = () => {
     const navigate = useNavigate();
