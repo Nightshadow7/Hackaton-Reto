@@ -32,3 +32,9 @@ function Formulario() {
 export default Formulario;
 
 
+{/*
+1. al hacer click al formulario entrar para editar 
+2. elegir los datos que quiere mostrar y cambiar en la base de datos
+3. mostrar el qr generado y para poder descargar solo la parte grafica la otra parte la hace antoni 
+*/}
+
