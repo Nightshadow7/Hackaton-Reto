@@ -62,7 +62,7 @@ const UserSchema = new Schema(
     qrs: [
       {
         qrs: {
-          type: Schema.Type.ObjectId,
+          type: Schema.Types.ObjectId,
           ref: "qrs"
         }
       },
