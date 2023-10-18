@@ -102,8 +102,8 @@
 }
 
 .account-list {
-  flex: 1; /* Ocupa la mitad derecha de la pantalla */
-  background-color: #e0e0e0; /* Color de fondo de la sección derecha */
+  flex: 1; 
+  background-color: #fff;
   padding: 20px;
 }
 
@@ -111,9 +111,8 @@
   font-size: 20px
 }
 
-/* Agrega estilos para la tarjeta de cuenta */
 .account-card {
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 8px;
   padding: 10px;
   margin: 10px 0;
@@ -121,7 +120,14 @@
 }
 
 .account-card:hover {
-  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el ratón sobre la tarjeta */
+  background-color: #f0f0f0;
+}
+
+.account-list-scroll {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 20px;
+  padding-right: 10px; 
 }
 
 .qr-button {
@@ -129,15 +135,30 @@
 }
 
 .btn-qr {
-  background-color: #28a745; /* Verde de Bootstrap */
+  margin-top: 1rem;
+  background-color: #28a745;
   color: #fff;
-  padding: 10px 20px;
+  padding: 15px 30px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .btn-qr:hover {
-  background-color: #218838; /* Cambio de color al pasar el ratón sobre el botón */
+  background-color: #218838; 
+}
+
+@media (max-width: 768px) {
+  .user-cuenta-container {
+    flex-direction: column;
+  }
+
+  .user-section {
+    padding: 10px;
+  }
+
+  .account-list {
+    padding: 10px;
+  }
 }
