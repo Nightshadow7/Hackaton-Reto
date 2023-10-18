@@ -1,11 +1,18 @@
 import React from 'react';
-import './App.css';
-import Header from './components/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import UserN_Cuenta from './components/UserN-Cuenta';
+import Ingreso from './components/Ingreso.jsx';
+import "./app.css"
+
+
 function App() {
   return (
-    <>
-  <Header />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/UserCuenta" element={<UserN_Cuenta />} />
+        <Route path="/Ingreso" element={<Ingreso />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

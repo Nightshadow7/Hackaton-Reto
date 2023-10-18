@@ -1,0 +1,138 @@
+.display {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../resources/backgroundGreen.jpg");
+    background-size: cover;
+
+}
+
+.border {
+    background-image: linear-gradient(125deg, rgb(111, 255, 0), rgb(35, 175, 0));
+    height: 70%;
+    width: 30%;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contain {
+    background-color: white;
+    height: 97%;
+    width: 97%;
+    border-top-right-radius: 19px;
+    border-bottom-left-radius: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Ingreso {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(1, 167, 15);
+    text-align: center;
+    font-size: 40px;
+    margin: 0px;
+    margin-bottom: 30px;
+}
+
+.subTitle {
+    color: rgb(61, 61, 61);
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0px;
+}
+
+.Input {
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    border-bottom: solid rgb(1, 167, 15) 4px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.Input:focus {
+    border: none;
+    border-bottom: solid 4px;
+    border-color: rgb(4, 221, 22);
+    outline: none;
+}
+
+.blockButtom {
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    background-color: rgb(1, 167, 15);
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 120px;
+    color: aliceblue;
+    font-size: large;
+}
+
+.submit:hover {
+    background-color: rgb(4, 201, 20);
+
+}
+
+.natvar {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    display: flex;
+}
+
+.logoImgOne {
+    display : block;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 350px;
+}
+.logoImgTwo {
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 150px;
+    display: none;
+}
+
+.logo {
+    width: 50%;
+    margin: 0px;
+}
+
+.exit {
+    display: flex;
+    justify-content: end;
+    width: 50%;
+}
+
+.x{
+    margin-right:20px ;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(125, 125, 125);
+}
+
+@media (max-width:1000px) {
+    
+    .border{
+        width: 300px;
+    }
+    .logoImgOne{
+        display: none;
+    }
+    .logoImgTwo{
+        display: block;
+    }
+}
+
+.swal2-backdrop-show::before {
+    background-color: rgba(0, 0, 0, 0.8); /* Ajusta el valor alpha (0.7) según tu preferencia */
+}

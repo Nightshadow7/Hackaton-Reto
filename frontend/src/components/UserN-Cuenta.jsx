@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+import './userN-Cuenta.css';
 
 function UserN_Cuenta() {
     const accountsData = [

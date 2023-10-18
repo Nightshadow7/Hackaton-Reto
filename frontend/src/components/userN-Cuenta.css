@@ -81,6 +81,10 @@
   background-color: #007bff; /* Color de fondo del logo */
   border-radius: 50%; /* Hace que el logo sea un círculo */
   margin-right: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-info h2 {
