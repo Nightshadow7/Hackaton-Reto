@@ -22,10 +22,12 @@
 
 .qr-volver-btn {
   align-self: start;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1.5rem;
   margin-bottom: 1.7rem;
   background-color: rgb(55, 204, 35);
   cursor: pointer;
+  border: none; 
+  border-radius: 15px;
 }
 
 @media (max-width: 750px) {

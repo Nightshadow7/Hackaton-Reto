@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QRItem from "./sub-componets/QRItem";
 import "./QRsDisponibles.css";
 
 export default function QRsDisponibles() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch(``)
+  }, [])
   const navigate = useNavigate();
   return (
     <div className="qr-disponibles-container">
