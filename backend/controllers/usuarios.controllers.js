@@ -160,7 +160,9 @@ export const createQR = async (req, res, next) => {
       // nose como ponerlo automatico, ando sin ideas F
     };
 
-    const backgroundImagePath = User.qrs.imagen;
+    // datos formularios, datos bancarios del que recibe (número de cuenta y nombres)
+
+    const backgroundImagePath = User.imagen;
 
     const qr_image = qr.image(JSON.stringify(data), { type: "png" });
 

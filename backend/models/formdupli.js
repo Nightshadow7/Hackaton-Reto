@@ -1,14 +1,20 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const campoSchema = new mongoose.Schema({
-  titulo: String,
-  tipo: String,
-  requerido: Boolean,
-});
+const formularioTemporalSchema = new mongoose.Schema(
+  {
+    nombre: String,
+    campos: [{
+      titulo: String,
+      tipo: String,
+      requerido: {
+        type: Boolean,
+        default: false
+      },
+    }],
+  },
+  {
+    versionKey: false,
+  }
+);
 
-const formularioTemporalSchema = new mongoose.Schema({
-  nombre: String,
-  campos: [campoSchema], 
-});
-
-export default mongoose.model('formulariostems', formularioTemporalSchema);
+export default mongoose.model("formularioseditados", formularioTemporalSchema);

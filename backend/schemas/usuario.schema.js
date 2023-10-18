@@ -6,6 +6,7 @@ const correo = Joi.string().email();
 const password = Joi.string().alphanum();
 const tipoDocumento = Joi.string().default("Cedula de Ciudadania")
 const numeroDocumento = Joi.number().min(1000000).max(999999999999)
+const rol = Joi.string().valid('ENTIDAD', 'USUARIO')
 const cuentasAhorro = Joi.array().items({
   numeroCuenta: Joi.number(),
   saldo: Joi.number(),
@@ -35,7 +36,8 @@ export const createUsuarioSchema = Joi.object({
   password: password.required(),
   tipoDocumento: tipoDocumento.required(),
   numeroDocumento: numeroDocumento.required(),
-  estado
+  estado,
+  rol
 });
 
 export const updateUsuarioSchema = Joi.object({
@@ -44,7 +46,8 @@ export const updateUsuarioSchema = Joi.object({
   password,
   tipoDocumento,
   numeroDocumento,
-  estado
+  estado,
+  rol
 });
 
 export const createCuentaAhorroSchema = Joi.object({
