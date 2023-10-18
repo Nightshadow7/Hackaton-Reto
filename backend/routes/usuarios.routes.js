@@ -28,15 +28,15 @@ router.post(
   joiValidator(schemas.createUsuarioSchema, "body"),
   service.createUsuario
 );
-router.post(
-  "/photo/:id",
-  [
-    joiValidator(schemas.getUsuarioSchema, "params"),
-    upload.single("image"),
-    joiValidator(schemas.createQRSchema, "body"),
-  ],
-  service.createUsuario
-);
+// router.post(
+//   "/photo/:id",
+//   [
+//     joiValidator(schemas.getUsuarioSchema, "params"),
+//     upload.single("image"),
+//     joiValidator(schemas.createQRSchema, "body"),
+//   ],
+//   service.createUsuario
+// );
 router.put("/:id", service.updateUsuario);
 
 export default router;

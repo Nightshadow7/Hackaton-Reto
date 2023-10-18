@@ -61,40 +61,10 @@ const UserSchema = new Schema(
     },
     qrs: [
       {
-        /* plantilla: {
+        qrs: {
           type: Schema.Types.ObjectId,
-          ref: "plantillas",
-          required: true,
-        },
-        nombre: {
-          type: String,
-          required: false,
-          unique: true,
-        },
-        cuentaDestino: {
-          type: Number,
-          required: true,
-        },
-        imagen: {
-          type: String,
-        }, */
-        estado: {
-          type: Boolean,
-          default: true,
-        },
-        createdAt: {
-          type: Date,
-          default: new Date()
-        },
-        singleQr: {
-          type: String,
-          required: true
-        },
-        nombre: {
-          type: String,
-          required: true
-        },
-        descripcion: String
+          ref: "qrs"
+        }
       },
     ],
     estado: {
