@@ -4,6 +4,7 @@ import { Router } from "express";
 const router = Router();
 
 router.get('/', service.getAll);
+router.get('/byUser/:id', service.findQRByUser);
 router.get('/:id', service.getOne);
 router.post('/', service.createQr);
 //router.put('/:id', service.updatePlantilla);
