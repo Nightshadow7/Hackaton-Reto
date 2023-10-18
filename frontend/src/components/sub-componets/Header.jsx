@@ -1,20 +1,21 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, NavLink, useNavigate } from 'react-router-dom';
 import UserN_Cuenta from '../UserN-Cuenta.jsx';
+import "./header.css"
 const Header = () => {
     const navigate = useNavigate();
     return (
         <>
             {/* <BrowserRouter> */}
-            <header >
+            <div className='header' >
 
             <nav>
                 <ul className='header-container'>
-                    <li onClick={()=>navigate('/Ingreso')}> Login </li>
-                    <li onClick={()=>navigate("/pagar")}> Pagar </li>
+                    <li className='bottoms' onClick={()=>navigate('/Ingreso')}> Login </li>
+                    <li className='bottoms' onClick={()=>navigate("/pagar")}> Pagar </li>
                 </ul>
             </nav>
-            </header>
+            </div>
 
             {/* <Routes>
                 <Route path='/login' element={<Login />} />

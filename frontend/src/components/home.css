@@ -1,7 +1,67 @@
 .displayHome {
     height: 100%;
     width: 100%;
-    display: flex;
     background-image:url("../resources/abstract-green-curve-gradient-template-on-white-background-free-vector.jpg");
     background-size: cover;
+
+}
+
+.bot{
+    width: 500px;
+    margin-bottom: 100px;
+    margin-right: 100px;
+}
+
+.body{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    height: 100%;
+}
+
+.bienvenido{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
+}
+.welcome{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 100px
+}
+
+
+@media (max-width:1240px) {
+    .body{
+        display: block;
+    }
+
+.bienvenido{
+height: 20%;
+display: flex;
+justify-content: center;
+margin-bottom: 100px;
+}
+
+.welcome{
+    margin-top: 150px;
+    font-size: 70px;
+}
+
+.contImg{
+    display: flex;
+    justify-content: end;
+}
+
+}
+
+@media (max-width:600px) {
+    .welcome{
+        margin-top: 150px;
+        font-size: 50px;
+    }
+    .bot{
+        margin: 0px;
+        width: 95%;
+    }
 }
