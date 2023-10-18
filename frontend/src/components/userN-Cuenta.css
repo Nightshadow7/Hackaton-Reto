@@ -57,15 +57,14 @@
   }
 }
 
-/* UserN-Cuenta.css */
 .user-cuenta-container {
   display: flex;
-  height: 100vh; /* Cubre la pantalla completa verticalmente */
+  height: 100vh;
 }
 
 .user-section {
-  flex: 1; /* Ocupa la mitad izquierda de la pantalla */
-  background-color: #f0f0f0; /* Color de fondo de la sección izquierda */
+  flex: 1; 
+  background-color: #f0f0f0; 
   padding: 20px;
 }
 
@@ -76,10 +75,10 @@
 }
 
 .user-logo {
-  width: 50px; /* Ancho del logo del usuario */
-  height: 50px; /* Alto del logo del usuario */
-  background-color: #007bff; /* Color de fondo del logo */
-  border-radius: 50%; /* Hace que el logo sea un círculo */
+  width: 50px;
+  height: 50px; 
+  background-color: #007bff; 
+  border-radius: 50%; 
   margin-right: 10px;
   overflow: hidden;
   display: flex;
@@ -97,7 +96,7 @@
 }
 
 .account-details {
-  background-color: #fff; /* Color de fondo del área de detalles de la cuenta */
+  background-color: #fff;
   padding: 20px;
 }
 
