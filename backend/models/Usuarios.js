@@ -10,7 +10,8 @@ const UserSchema = new Schema({
   correo: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    unique: true
   },
   password: {
     type: String,
@@ -23,7 +24,8 @@ const UserSchema = new Schema({
   },
   numeroDocumento: {
     type: Number,
-    required: true
+    required: true,
+    unique: true
   },
   cuentasAhorro: [{
     numeroCuenta: String,
@@ -31,19 +33,23 @@ const UserSchema = new Schema({
       type: Number,
       default: 200000
     },
-    movimientos: [{
-      fecha: Date,
-      monto: Number,
-      tipo: {
-        enum: ['INGRESO', 'EGRESO'],
-        type: String
-      }
-    }]
+    
+  }],
+  movimientos: [{
+    fecha: Date,
+    monto: Number,
+    tipo: {
+      enum: ['INGRESO', 'EGRESO'],
+      type: String
+    }
   }],
   estado: {
     type: Boolean,
     default: true
   }
+},
+{
+  versionKey: false,
 });
 
 UserSchema.statics.encryptPassword = (password) => {
