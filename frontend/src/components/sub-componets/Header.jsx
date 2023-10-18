@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import Login from './login.jsx';
-import UserN_Cuenta from './UserN-Cuenta.jsx';
+import UserN_Cuenta from '../UserN-Cuenta.jsx';
 const Header = () => {
 
     return (
