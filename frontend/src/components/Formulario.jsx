@@ -34,7 +34,7 @@ export default Formulario;
 
 {/*
 
-extra coloca un boton el la previsualizacion de qr para poder crear qrs
+ extra coloca un boton el la previsualizacion de qr para poder crear qrs
 
 
 1. al hacer click al formulario entrar para editar 
