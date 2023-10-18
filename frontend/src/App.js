@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import UserN_Cuenta from './components/UserN-Cuenta';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
