@@ -45,7 +45,10 @@ function UserN_Cuenta() {
             <summary className="user-logo"> 
             <img src={image} className="userImage" alt="User" />
             </ summary>
-            <h2> XD </ h2>
+            <div className="logout-button">
+                
+          <button onClick={handleLogout}>Cerrar Sesión</button>
+            </div>
             </details>
 
           </div>
