@@ -6,7 +6,7 @@ const Header = () => {
 
     return (
         <>
-            <BrowserRouter>
+            {/* <BrowserRouter> */}
             <header >
 
             <nav>
@@ -17,13 +17,13 @@ const Header = () => {
             </nav>
             </header>
 
-            <Routes>
+            {/* <Routes>
                 <Route path='/login' element={<Login />} />
                 <Route path='/pagar' element={<UserN_Cuenta />} />
 
-            </Routes>
+            </Routes> */}
 
-            </BrowserRouter>
+            {/* </BrowserRouter> */}
 
         </>
     );
