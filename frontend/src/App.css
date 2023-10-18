@@ -36,3 +36,84 @@
     transform: rotate(360deg);
   }
 }
+
+/* UserN-Cuenta.css */
+.user-cuenta-container {
+  display: flex;
+  height: 100vh; /* Cubre la pantalla completa verticalmente */
+}
+
+.user-section {
+  flex: 1; /* Ocupa la mitad izquierda de la pantalla */
+  background-color: #f0f0f0; /* Color de fondo de la sección izquierda */
+  padding: 20px;
+}
+
+.user-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-logo {
+  width: 50px; /* Ancho del logo del usuario */
+  height: 50px; /* Alto del logo del usuario */
+  background-color: #007bff; /* Color de fondo del logo */
+  border-radius: 50%; /* Hace que el logo sea un círculo */
+  margin-right: 10px;
+}
+
+.user-info h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.user-info p {
+  margin: 0;
+}
+
+.account-details {
+  background-color: #fff; /* Color de fondo del área de detalles de la cuenta */
+  padding: 20px;
+}
+
+.account-list {
+  flex: 1; /* Ocupa la mitad derecha de la pantalla */
+  background-color: #e0e0e0; /* Color de fondo de la sección derecha */
+  padding: 20px;
+}
+
+.account-list h2 {
+  font-size: 20px
+}
+
+/* Agrega estilos para la tarjeta de cuenta */
+.account-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  transition: background-color 0.2s;
+}
+
+.account-card:hover {
+  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el ratón sobre la tarjeta */
+}
+
+.qr-button {
+  text-align: center;
+}
+
+.btn-qr {
+  background-color: #28a745; /* Verde de Bootstrap */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-qr:hover {
+  background-color: #218838; /* Cambio de color al pasar el ratón sobre el botón */
+}
