@@ -8,11 +8,12 @@ import EditPlantilla from './components/EditPlantilla';
 import "./app.css"
 import Pay from './components/pay';
 import QRsDisponibles from './components/QRsDisponibles';
+import Formulario from './components/Formulario';
 
-// Función que verifica si existe el token en el almacenamiento local
+
 function isUserLoggedIn() {
   const token = localStorage.getItem('token');
-  return !!token; // Revisar si el token existe
+  return !!token; 
 }
 
 function ProtectedRoute({ element, path }) {
@@ -34,6 +35,7 @@ function App() {
         <Route path='/plantilla' element={<Plantilla />} />
         <Route path='/edit' element={<EditPlantilla />} />
         <Route path="/UserCuenta" element={<UserN_Cuenta />} />
+        <Route path="/Formulario" element={<Formulario />} />
       </Routes>
     </BrowserRouter>
   );

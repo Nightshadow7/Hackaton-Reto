@@ -1,0 +1,28 @@
+.formulario {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .formulario:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .formulario h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .formulario a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .formulario a:hover {
+    text-decoration: underline;
+  }
+  

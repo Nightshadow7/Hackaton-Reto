@@ -21,7 +21,7 @@ function UserN_Cuenta() {
     
     const token = localStorage.getItem("token");
     if (!token) {
-      return navigate("/Ingreso");
+      navigate("/Ingreso");
     }
 
     const usuario = JSON.parse(localStorage.getItem("usuario"));
@@ -40,12 +40,20 @@ function UserN_Cuenta() {
     <div className="user-cuenta-container">
       <div className="user-section">
         <div className="user-header">
-          <div className="user-logo">
+          <div >
+
+          <details>
+            <summary className="user-logo"> 
             <img src={image} className="userImage" alt="User" />
+            </ summary>
+            <h2> XD </ h2>
+            </details>
+
           </div>
           <div className="user-info">
-            <h2 className="white">User Information</h2>
-            <p className="white">User: {localStorage.getItem("userName")}</p>
+            <h2 className="white">{JSON.parse(localStorage.getItem("usuario")).rol}</h2>
+            <p className="white">User: {JSON.parse(localStorage.getItem("usuario")).nombre}</p>
+            <p className="white">documeto: {JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
           </div>
         </div>
         {selectedAccount ? (
