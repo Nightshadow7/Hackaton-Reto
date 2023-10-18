@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import UserN_Cuenta from './Components/UserN-Cuenta';
+import UserN_Cuenta from './components/UserN-Cuenta';
 
 function App() {
   return (
