@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import UserN_Cuenta from './components/UserN-Cuenta';
-
+import Header from './components/Header';
 function App() {
   return (
-    <div className="App">
-      <UserN_Cuenta />
-    </div>
+    <>
+  <Header />
+    </>
   );
 }
 
