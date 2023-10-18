@@ -10,6 +10,7 @@ import Pay from './components/pay';
 import QRsDisponibles from './components/QRsDisponibles';
 import Formulario from './components/Formulario';
 import AdminDashboard from './components/AdminDashboard';
+import Pagos from './components/Pagos';
 
 
 function isUserLoggedIn() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/UserCuenta" element={<UserN_Cuenta />} />
         <Route path="/Formulario" element={<Formulario />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
+        <Route path="/pagos" element={<Pagos />} />
       </Routes>
     </BrowserRouter>
   );

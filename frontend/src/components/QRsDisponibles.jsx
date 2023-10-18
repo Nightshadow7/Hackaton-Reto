@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { saveAs } from "file-saver";
 import QRItem from "./sub-componets/QRItem";
 import "./QRsDisponibles.css";
 import axios from "axios";
@@ -8,9 +9,9 @@ export default function QRsDisponibles() {
   const [qrsPerUser, setQrsPerUser] = useState([]);
   const [qrViewer, setQrViewer] = useState("");
 
-  const qrViewerHandler = (image) => {
-    setQrViewer(image);
-  };
+  const downloadImg = (img) => {
+    saveAs(img, 'qr-code.jpg')
+  }
 
   useEffect(() => {
     const usuario = JSON.parse(localStorage.getItem("usuario"));
@@ -58,7 +59,8 @@ export default function QRsDisponibles() {
       </div>
       <div className="crear-qr">
         <h2>Visualizador de QR's</h2>
-        <img src={qrViewer} alt="" download />
+        <img src={qrViewer} alt="" />
+        <button onClick={() => downloadImg(qrViewer)}>Descargar!</button>
       </div>
     </div>
   );
