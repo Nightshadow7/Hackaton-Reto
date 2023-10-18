@@ -4,7 +4,8 @@ import cors from "cors";
 import { mongooseConnection } from "./config/mongoose.js";
 import { mongoClientConnection } from "./config/mongoClient.js";
 import { logErrors, errorHandler, isBoomError } from "./middlewares/errorHandler.js";
-import router from "./routes/index.js";
+import { router as formularioRoutes } from './routes/form.routes.js';
+import { router as formularioDupliRoutes } from './routes/formdupli.routes.js';
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -20,12 +21,16 @@ app.use(cors({
 
 mongoClientConnection();
 mongooseConnection();
-// aquí las rutas
-app.use('/api', router);
-app.use(logErrors)
-app.use(isBoomError)
-app.use(errorHandler)
+
+// Rutas de la aplicación
+app.use('/api/formulario', formularioRoutes);
+app.use('/api/formulario/temp', formularioDupliRoutes);
+
+// Manejo de errores
+app.use(logErrors);
+app.use(isBoomError);
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
-})
+});
