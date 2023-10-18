@@ -1,66 +1,75 @@
 .displayHome {
     height: 100%;
     width: 100%;
-    background-image:url("../resources/abstract-green-curve-gradient-template-on-white-background-free-vector.jpg");
+    background-image: url("../resources/abstract-green-curve-gradient-template-on-white-background-free-vector.jpg");
     background-size: cover;
 
 }
 
-.bot{
+.bot {
     width: 500px;
     margin-bottom: 100px;
-    margin-right: 100px;
+    margin-right: 70px;
 }
 
-.body{
+.body {
     display: flex;
     align-items: end;
     justify-content: end;
     height: 100%;
 }
 
-.bienvenido{
+.bienvenido {
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    width: 55%;
     align-items: center;
     height: 100%;
 }
-.welcome{
-    font-family:Georgia, 'Times New Roman', Times, serif;
+
+.contImg{
+    width: 45%;
+    display: flex;;
+    justify-content: end;
+}
+
+.welcome {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 100px
 }
 
 
 @media (max-width:1240px) {
-    .body{
+    .body {
         display: block;
     }
 
-.bienvenido{
-height: 20%;
-display: flex;
-justify-content: center;
-margin-bottom: 100px;
-}
+    .bienvenido {
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+    }
 
-.welcome{
-    margin-top: 150px;
-    font-size: 70px;
-}
+    .welcome {
+        margin-top: 150px;
+        font-size: 70px;
+    }
 
-.contImg{
-    display: flex;
-    justify-content: end;
-}
+    .v {
+        display: flex;
+        justify-content: end;
+    }
 
 }
 
 @media (max-width:600px) {
-    .welcome{
+    .welcome {
         margin-top: 150px;
         font-size: 50px;
     }
-    .bot{
+
+    .bot {
         margin: 0px;
         width: 95%;
     }
