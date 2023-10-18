@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ingreso.css";
 import logoOne from "../resources/logoComultrasan.png";
 import logoTwo from "../resources/financiera_comultrasan.png";
@@ -11,6 +11,13 @@ function Ingreso() {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if(!token) {
+        navigate('/Ingreso');
+    }
+  }, []);
 
   const InputChange = (event) => {
     const target = event.target;
@@ -37,11 +44,17 @@ function Ingreso() {
   
     try {
       const response = await axios.post("http://localhost:7000/api/auth", {
-         correo,  
-         password,
+        correo,
+        password,
       });
-      console.log(response.data);
+  
       if (response.data.usuario) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("usuario", JSON.stringify(response.data.usuario));
+  
+        const imagenBase64 = response.data.usuario.imagen;
+        localStorage.setItem("imagen", imagenBase64);
+  
         navigate("/UserCuenta");
       } else {
         new swal({
@@ -59,6 +72,7 @@ function Ingreso() {
       });
     }
   };
+  
   
 
   const NavigateHome = () => {

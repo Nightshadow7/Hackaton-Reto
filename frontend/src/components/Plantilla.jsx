@@ -1,4 +1,4 @@
-function Plantilla() {
+const Plantilla =() => {
     return ( 
         <>
         <h1>hola</h1>

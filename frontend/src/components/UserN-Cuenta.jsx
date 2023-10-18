@@ -1,72 +1,86 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import image from '../resources/header.jpg'
-import './userN-Cuenta.css';
+import image from "../resources/header.jpg";
+import "./userN-Cuenta.css";
+import axios from "axios";
 
 function UserN_Cuenta() {
-    const accountsData = [
-        { id: 1, accountNumber: '12345', balance: 1000 },
-        { id: 2, accountNumber: '67890', balance: 2000 },
-        { id: 3, accountNumber: '12312', balance: 3000 },
-        { id: 4, accountNumber: '65465', balance: 4000 },
-        { id: 5, accountNumber: '98798', balance: 5000 },
-        { id: 6, accountNumber: '31312', balance: 6000 },
-        { id: 7, accountNumber: '64826', balance: 7000 },
-        { id: 8, accountNumber: '92922', balance: 8000 },
-        { id: 9, accountNumber: '64576', balance: 9000 },
-        { id: 10, accountNumber: '73273', balance: 10000 },
-    ];
+  const [accountsData, setAccountsData] = useState([]);
+  const [selectedAccount, setSelectedAccount] = useState(null);
+  const navigate = useNavigate();
 
-    const [selectedAccount, setSelectedAccount] = useState(null);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("userImage");
+    localStorage.removeItem("usuario");
+    navigate("/Ingreso");
+  };
 
-    const handleAccountClick = (account) => {
-        setSelectedAccount(account);
-    };
-    const navigate = useNavigate()
-    const navigateQr = ()=>{
-        navigate("/codigos-qr")
+  useEffect(() => {
+    
+    const token = localStorage.getItem("token");
+    if (!token) {
+      return navigate("/Ingreso");
     }
 
-    return (
-        <div className="user-cuenta-container">
-            <div className="user-section">
-                <div className="user-header">
-                    <div className="user-logo">
-                        <img src={image} className='userImage'/>
-                    </div>
-                    <div className="user-info">
-                        <h2 className='white'>User Information</h2>
-                        <p className='white'>User: John Doe</p>
-                    </div>
-                </div>
-                {selectedAccount ? (
-                    <div className="account-details">
-                        <h2>Account Details</h2>
-                        <p>Account Number: {selectedAccount.accountNumber}</p>
-                        <p>Balance: {selectedAccount.balance}</p>
-                    </div>
-                ) : null}
-            </div>
-            <div className="account-list">
-                <h2>N° Cuentas</h2>
-                <div className="account-list-scroll">
-                    {accountsData.map((account) => (
-                        <div
-                            key={account.id}
-                            className={`account-card account-item ${selectedAccount && selectedAccount.id === account.id ? 'selected' : ''}`}
-                            onClick={() => handleAccountClick(account)}
-                        >
-                            {account.accountNumber}
-                        </div>
-                    ))}
-                </div>
-                <div className="qr-button">
-                    <button className='btn-qr' onClick={navigateQr}>QR</button>
-                </div>
-            </div>
-            
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    setAccountsData(usuario.cuentasAhorro);
+  }, []);
+
+  const handleAccountClick = (account) => {
+    setSelectedAccount(account);
+  };
+
+  const navigateQr = () => {
+    navigate("/codigos-qr");
+  };
+
+  return (
+    <div className="user-cuenta-container">
+      <div className="user-section">
+        <div className="user-header">
+          <div className="user-logo">
+            <img src={image} className="userImage" alt="User" />
+          </div>
+          <div className="user-info">
+            <h2 className="white">User Information</h2>
+            <p className="white">User: {localStorage.getItem("userName")}</p>
+          </div>
         </div>
-    );
+        {selectedAccount ? (
+          <div className="account-details">
+            <h2>Account Details</h2>
+            <p>Account Number: {selectedAccount.numeroCuenta}</p>
+            <p>Balance: {selectedAccount.saldo}</p>
+          </div>
+        ) : null}
+        <div className="logout-button">
+          <button onClick={handleLogout}>Cerrar Sesión</button>
+        </div>
+      </div>
+      <div className="account-list-scroll">
+        {accountsData.length > 0 ? (
+          accountsData.map((account, index) => (
+            <div
+              key={index}
+              className={`account-card account-item ${
+                selectedAccount &&
+                selectedAccount.numeroCuenta === account.numeroCuenta
+                  ? "selected"
+                  : ""
+              }`}
+              onClick={() => handleAccountClick(account)}
+            >
+              Cuenta {account.numeroCuenta}
+            </div>
+          ))
+        ) : (
+          <p>No se encontraron cuentas de ahorro.</p>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default UserN_Cuenta;

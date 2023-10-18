@@ -1,26 +1,39 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import UserN_Cuenta from './components/UserN-Cuenta';
 import Ingreso from './components/Ingreso.jsx';
 import Home from './components/Home.jsx';
-import Header from './components/sub-componets/Header';
 import Plantilla from './components/Plantilla';
 import EditPlantilla from './components/EditPlantilla';
 import "./app.css"
 import Pay from './components/pay';
 import QRsDisponibles from './components/QRsDisponibles';
 
+// Función que verifica si existe el token en el almacenamiento local
+function isUserLoggedIn() {
+  const token = localStorage.getItem('token');
+  return !!token; // Revisar si el token existe
+}
+
+function ProtectedRoute({ element, path }) {
+  if (path === '/Ingreso' || isUserLoggedIn()) {
+    return element;
+  } else {
+    return <Navigate to="/UserCuenta" />;
+  }
+}
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/UserCuenta" element={<UserN_Cuenta />} />   {/*protegida*/}
         <Route path="/Ingreso" element={<Ingreso />} />
-        <Route path='/pagar' element={<Pay />}></Route>
-        <Route path='/codigos-qr' element={<QRsDisponibles />}/>  {/*protegida*/}
-        <Route path='/plantilla' element={<Plantilla />}/>        {/*protegida*/}
-        <Route path='/edit' element={<EditPlantilla />}/>         {/*protegida*/}
+        <Route path='/pagar' element={<Pay />} />
+        <Route path='/codigos-qr' element={<QRsDisponibles />} />
+        <Route path='/plantilla' element={<Plantilla />} />
+        <Route path='/edit' element={<EditPlantilla />} />
+        <Route path="/UserCuenta" element={<UserN_Cuenta />} />
       </Routes>
     </BrowserRouter>
   );
