@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, NavLink, useNavigate } from 'react-router-dom';
 import Login from './login.jsx';
 import UserN_Cuenta from '../UserN-Cuenta.jsx';
 const Header = () => {
-
+    const navigate = useNavigate();
     return (
         <>
             {/* <BrowserRouter> */}
@@ -11,8 +11,8 @@ const Header = () => {
 
             <nav>
                 <ul className='header-container'>
-                    <li> <NavLink to='/login' > Login </NavLink> </li>
-                    <li> <NavLink to='/pagar'>Pagar</NavLink> </li>
+                    <li onClick={()=>navigate('/Ingreso')}> Login </li>
+                    <li onClick={()=>navigate("/pagar")}> Pagar </li>
                 </ul>
             </nav>
             </header>
