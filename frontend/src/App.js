@@ -6,7 +6,7 @@ import Home from './components/Home.jsx';
 import Header from './components/sub-componets/Header';
 import "./app.css"
 import Pay from './components/pay';
-
+import QRsDisponibles from './components/QRsDisponibles';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Route path="/Ingreso" element={<Ingreso />} />
         <Route path="/header" element={<Header />} />
         <Route path='/pagar' element={<Pay />}></Route>
+        <Route path='/codigos-qr' element={<QRsDisponibles />}></Route>
       </Routes>
     </BrowserRouter>
   );
