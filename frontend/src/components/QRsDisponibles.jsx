@@ -1,16 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { saveAs } from "file-saver";
+import QrScanner from "qr-scanner";
 import QRItem from "./sub-componets/QRItem";
 import "./QRsDisponibles.css";
 import axios from "axios";
 
 export default function QRsDisponibles() {
+  const navigate = useNavigate();
   const [qrsPerUser, setQrsPerUser] = useState([]);
   const [qrViewer, setQrViewer] = useState("");
+  const [linkPago, setLinkPago] = useState("")
 
   const downloadImg = (img) => {
-    saveAs(img, 'qr-code.jpg')
+    saveAs(img, "qr-code.jpg");
+  };
+  const getLink = (img) => {
+    QrScanner.scanImage(img)
+    .then(result => setLinkPago(result));
+    const newLink = linkPago.split('http://localhost:3000').pop();
+    setLinkPago(newLink);
+    navigate(`${newLink}`);
   }
 
   useEffect(() => {
@@ -24,7 +34,6 @@ export default function QRsDisponibles() {
       .then(({ data }) => setQrsPerUser(data))
       .catch((err) => console.log(err));
   }, []);
-  const navigate = useNavigate();
   return (
     <div className="qr-disponibles-container">
       <div className="qrs-disponibles">
@@ -60,7 +69,12 @@ export default function QRsDisponibles() {
       <div className="crear-qr">
         <h2>Visualizador de QR's</h2>
         <img src={qrViewer} alt="" />
-        <button onClick={() => downloadImg(qrViewer)}>Descargar!</button>
+        {qrViewer ? ( <>
+          <button onClick={() => downloadImg(qrViewer)}>Descargar!</button>
+          <button onClick={() => getLink(qrViewer)}>Link de pago</button> </>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
