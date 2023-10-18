@@ -55,10 +55,10 @@ function UserN_Cuenta() {
           </div>
         ) : null}
         <div className="logout-button">
-          <button onClick={handleLogout}>Cerrar Sesión</button>
+          <a onClick={handleLogout}>Cerrar Sesión</a>
         </div>
-        <div className="qrs-button">
-          <button onClick={navigateQr}>Códigos QR</button>
+        <div className="btn-qr">
+          <a onClick={navigateQr}>Códigos QR</a>
         </div>
       </div>
       <div className="account-list-scroll">

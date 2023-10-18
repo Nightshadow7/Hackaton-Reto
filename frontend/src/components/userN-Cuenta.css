@@ -60,14 +60,31 @@
 .user-cuenta-container {
   display: flex;
   height: 100vh;
+  background-color: #f0f0f0;
 }
+
 
 .user-section {
-  flex: 1;
-  background-color: green;
+  width: 50%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #007bff;
+  color: white;
   padding: 20px;
+  overflow-y: auto;
 }
 
+.account-list {
+  width: 50%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
 .user-header {
   display: flex;
   align-items: center;
@@ -77,45 +94,48 @@
 .user-logo {
   width: 50px;
   height: 50px;
-  background-color: #007bff;
-  border-radius: 50%; 
-  margin-right: 10px;
-  overflow: hidden;
+  background-color: #fff;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 10px;
 }
 
 .user-info h2 {
   font-size: 20px;
+  padding-left: 1rem;
   margin: 0;
 }
 
 .user-info p {
   margin: 0;
+  padding-left: 1rem;
+  color: white;
 }
 
 .account-details {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+  color: #000000;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 }
 
-.account-list {
-  flex: 1; 
-  background-color: #fff;
-  padding: 20px;
-}
+
 
 .account-list h2 {
-  font-size: 20px
+  font-size: 20px;
+  margin: 0;
 }
 
 .account-card {
   border: 1px solid #000000;
   border-radius: 8px;
-  padding: 10px;
+  padding: 15px;
   margin: 10px 0;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
@@ -124,10 +144,14 @@
 }
 
 .account-list-scroll {
+  margin-left: 17rem;
+  margin-top: 10rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-height: 300px;
   overflow-y: auto;
-  margin-top: 20px;
-  padding-right: 10px; 
+  padding-right: 10px;
 }
 
 .qr-button {
@@ -145,8 +169,19 @@
   font-size: 20px;
 }
 
+.logout-button{
+  margin-top: 1rem;
+  background-color: red;
+  color: #fff;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 .btn-qr:hover {
-  background-color: #218838; 
+  background-color: #218838;
 }
 
 @media (max-width: 768px) {
@@ -155,11 +190,30 @@
   }
 
   .user-section {
-    padding: 10px;
-  }
+    width: 100%;
+  min-width: initial;
+  padding: 10px;
+  overflow-y: initial;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  border-radius: 0;
+}
 
-  .account-list {
-    padding: 10px;
+.account-list {
+  width: 100%;
+  min-width: initial;
+  padding: 10px;
+  background-color: #fff;
+  color: initial;
+  border-radius: 0;
+}
+
+  .account-list-scroll {
+    max-height: none;
+    overflow-y: initial;
+    padding-right: 0;
   }
 }
 
