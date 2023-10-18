@@ -145,22 +145,29 @@ export const Image = async (req, res, next) => {
 export const createQR = async (req, res, next) => {
   try {
     const oid = req.params.id;
-    let { precioDefault, descripcion, idCuentaAhorros, idFormulario } = req.body;
-    const User = await Usuario.findById({ _id: oid });
+    let { precioDefault, nombre, descripcion, idCuentaAhorros, idFormulario } =
+      req.body;
 
+    const User = await Usuario.findById({ _id: oid });
     if (!User)
       throw boom.notFound("Usuario ID no encontrado en la base de datos");
     if (!User.estado) {
       throw boom.badRequest("El Usuario se encuentra Bloqueado ");
     }
 
+/*     const existeCuenta = await Usuario.findById({
+      _id: req.params.id,
+      cuentasAhorro: { $elemMatch: { _id: idCuentaAhorros } },
+    });
+
+    if(!existeCuenta)
+      throw boom.badData('ID Cuenta de Ahorros no coincide con usuario') */
     let formFields = await Form.find({ _id: idFormulario });
     const data = {
       nombre: User.nombre,
       numeroDocumento: User.numeroDocumento,
       tipoDocumento: User.tipoDocumento,
       precioDefault: precioDefault ? precioDefault : null,
-      descripcion,
       idCuentaAhorros,
       idFormulario,
       formFields,
@@ -182,14 +189,15 @@ export const createQR = async (req, res, next) => {
           qrs: {
             singleQr: myQrCode,
             createdAt: new Date(),
+            nombre,
+            descripcion: descripcion ? descripcion : null
           },
         },
       },
       { new: true }
     );
 
-    res.status(200).json({ result: myQrCode });
-
+    res.status(200).json({ result: existeCuenta });
     //const qr_image = qr.image(JSON.stringify(data), { type: "png" });
     /* 
     const backgroundImagePath = User.imagen;

@@ -89,7 +89,12 @@ const UserSchema = new Schema(
         singleQr: {
           type: String,
           required: true
-        }
+        },
+        nombre: {
+          type: String,
+          required: true
+        },
+        descripcion: String
       },
     ],
     estado: {
