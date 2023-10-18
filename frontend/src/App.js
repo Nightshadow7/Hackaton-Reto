@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
-import UserN_Cuenta from './Components/UserN-Cuenta';
+import UserN_Cuenta from './components/UserN-Cuenta';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <UserN_Cuenta />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/UserCuenta" element={<UserN_Cuenta/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
