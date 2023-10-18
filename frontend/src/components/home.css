@@ -1,0 +1,7 @@
+.displayHome {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-image:url("../resources/abstract-green-curve-gradient-template-on-white-background-free-vector.jpg");
+    background-size: cover;
+}

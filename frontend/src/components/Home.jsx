@@ -1,13 +1,13 @@
 import "./home.css"
 import Header from "./sub-componets/Header"
-import Login from "./sub-componets/login"
 
 function Home() {
     return ( 
-        <>
-        <Header/>
-        <Login/>
-        </>
+        <div className="displayHome">
+            <div>
+            <Header/>
+            </div>
+        </div>
      );
 }
 
