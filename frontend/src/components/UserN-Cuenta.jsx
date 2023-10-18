@@ -55,8 +55,8 @@ function UserN_Cuenta() {
       <h2 className="white">
         {JSON.parse(localStorage.getItem("usuario")).rol}
       </h2>
-      <p className="white">User: {JSON.parse(localStorage.getItem("usuario")).nombre}</p>
-      <p className="white">Documento: {JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
+      <p className="white">{JSON.parse(localStorage.getItem("usuario")).nombre}</p>
+      <p className="white">{JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
     </>
   ) : (
     <p className="white">Usuario no encontrado en el almacenamiento local</p>
