@@ -43,6 +43,29 @@ const UserSchema = new Schema({
       type: String
     }
   }],
+  qrs:[{
+    plantilla: {
+      type: Schema.Types.ObjectId,
+      ref: "plantillas",
+      required: true,
+    },
+    nombre:{
+      type: String,
+      required:false,
+      unique: true,
+    },
+    cuentaDestino: {
+      type: Number,
+      required: true,
+    },
+    imagen: {
+      type: String
+    },
+    estado: {
+      type: Boolean,
+      default: true
+    }
+  }],
   estado: {
     type: Boolean,
     default: true
