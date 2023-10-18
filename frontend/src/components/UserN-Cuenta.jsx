@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import image from '../resources/header.jpg'
 import './userN-Cuenta.css';
 
@@ -21,6 +22,10 @@ function UserN_Cuenta() {
     const handleAccountClick = (account) => {
         setSelectedAccount(account);
     };
+    const navigate = useNavigate()
+    const navigateQr = ()=>{
+        navigate("/codigos-qr")
+    }
 
     return (
         <div className="user-cuenta-container">
@@ -56,7 +61,7 @@ function UserN_Cuenta() {
                     ))}
                 </div>
                 <div className="qr-button">
-                    <button className='btn-qr'>QR</button>
+                    <button className='btn-qr' onClick={navigateQr}>QR</button>
                 </div>
             </div>
             
