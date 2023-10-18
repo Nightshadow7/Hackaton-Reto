@@ -50,10 +50,19 @@ function UserN_Cuenta() {
 
           </div>
           <div className="user-info">
-            <h2 className="white">{JSON.parse(localStorage.getItem("usuario")).rol}</h2>
-            <p className="white">User: {JSON.parse(localStorage.getItem("usuario")).nombre}</p>
-            <p className="white">documeto: {JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
-          </div>
+  {localStorage.getItem("usuario") ? (
+    <>
+      <h2 className="white">
+        {JSON.parse(localStorage.getItem("usuario")).rol}
+      </h2>
+      <p className="white">User: {JSON.parse(localStorage.getItem("usuario")).nombre}</p>
+      <p className="white">Documento: {JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
+    </>
+  ) : (
+    <p className="white">Usuario no encontrado en el almacenamiento local</p>
+  )}
+</div>
+
         </div>
         {selectedAccount ? (
           <div className="account-details">

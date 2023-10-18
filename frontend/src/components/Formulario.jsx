@@ -27,7 +27,7 @@ function Formulario() {
       ))}
 
       <div> 
-        <button> </ button>
+        <button> Previsualizacion QR code </ button>
         </ div>
     </div>
   );
