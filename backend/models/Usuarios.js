@@ -16,18 +16,20 @@ const UserSchema = new Schema({
     required: true,
     trim: true
   },
-  numeroDocumento: {
-    type: Number,
-    required: true
-  },
   tipoDocumento: {
     type: String,
     default: 'Cédula de Ciudadanía'
   },
+  numeroDocumento: {
+    type: Number,
+    required: true
+  },
   cuentasAhorro: [{
     numeroCuenta: String,
-    pin: Number,
-    saldo: Number,
+    saldo: {
+      type: Number,
+      default: 200000
+    },
     movimientos: [{
       fecha: Date,
       monto: Number,
