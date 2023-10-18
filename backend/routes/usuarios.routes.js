@@ -6,6 +6,7 @@ const router = Router();
 router.get('/', service.getAll);
 router.get('/:id', service.getOne);
 router.post('/', service.createUsuario);
+router.post('/cuenta/:id', service.createCuentaAhorros);
 router.put('/:id', service.updateUsuario);
 router.delete('/:id', service.deleteUsuario);
 
