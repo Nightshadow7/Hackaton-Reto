@@ -20,29 +20,33 @@ const UserSchema = new Schema({
   },
   tipoDocumento: {
     type: String,
-    default: 'Cédula de Ciudadanía'
+    required: true,
+    enum: ['Cédula de Ciudadanía' , 'Targeta Identidad' , 'targeta Extrangeria']
   },
   numeroDocumento: {
     type: Number,
     required: true,
-    unique: true
+    unique: true,
   },
-  cuentasAhorro: [{
-    numeroCuenta: String,
-    saldo: {
-      type: Number,
-      default: 200000
-    },
-    
-  }],
-  movimientos: [{
+  cuentasAhorro:{
+    type: [{
+      numeroCuenta: {
+        type: Number
+      },
+      saldo: {
+        type: Number,
+      },
+    }]
+  },
+  movimientos:{ 
+    type: [{
     fecha: Date,
     monto: Number,
     tipo: {
       enum: ['INGRESO', 'EGRESO'],
       type: String
     }
-  }],
+  }]},
   qrs:[{
     plantilla: {
       type: Schema.Types.ObjectId,

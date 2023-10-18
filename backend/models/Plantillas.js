@@ -13,7 +13,9 @@ const PlantillaSchema = new Schema({
     type: Boolean,
     default: true,
   },
-  adicional: Schema.Types.Mixed,
+  adicional:{
+    type: Schema.Types.Mixed
+  } ,
 },
 {
   versionKey: false,

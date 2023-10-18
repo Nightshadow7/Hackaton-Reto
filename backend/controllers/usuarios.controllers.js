@@ -3,6 +3,7 @@ import Usuario from "../models/Usuarios.js";
 import { db } from "../config/mongoClient.js";
 import { ObjectId } from "mongodb";
 const usuarios = db.collection("usuarios");
+import generateRandomNumber from "../middlewares/saldoValidator.js";
 
 export const getAll = async (req, res, next) => {
   try {
@@ -15,8 +16,11 @@ export const getAll = async (req, res, next) => {
 
 export const getOne = async (req, res, next) => {
   try {
-    const data = await usuarios.find({ _id: req.params.id }).toArray();
-    res.status(200).json(data);
+    const oid = req.params.id;
+    const User = await Usuario.findById({ _id: oid });
+    if (!User)
+      throw boom.notFound("Usuario ID no encontrado en la base de datos");
+    res.status(200).json(User);
   } catch (err) {
     next(err);
   }
@@ -56,24 +60,36 @@ export const createCuentaAhorros = async (req, res, next) => {
     if (!User.estado) {
       throw boom.badRequest("El Usuario se encuentra Bloqueado ");
     }
-    const { saldo } = req.body;
-    const numberCount = Math.floor(10000000000 + Math.random() * 90000000000);
-    if (saldo < 1) {
-      const newUser = new Usuario({
-        numeroCuenta: numberCount,
-        saldo: 200000,
-      });
-      await newUser.save();
-      res.status(200).json(newUser);
+    const data = req.body.cuentasAhorro || [];
+    const createdAccounts = [];
+    for (const account of data) {
+      const number = generateRandomNumber();
+      const saldo = account.saldo < 1 ? 200000 : account.saldo;
+      const newAccount = {
+        numeroCuenta: number,
+        saldo,
+      };
+      User.cuentasAhorro.push(newAccount);
+      createdAccounts.push(newAccount);
     }
-    const newUser = new Usuario({
-      numeroCuenta: numberCount,
-      saldo,
-    });
-    await newUser.save();
-    res.status(200).json(newUser);
+    await User.save();
+    res.status(200).json(createdAccounts);
   } catch (err) {
     next(err);
+  }
+};
+
+export const createQR = async (req, res, next) => {
+  try {
+    const oid = req.params.id;
+    const User = await Usuario.findById({ _id: oid });
+    if (!User)
+      throw boom.notFound("Usuario ID no encontrado en la base de datos");
+    if (!User.estado) {
+      throw boom.badRequest("El Usuario se encuentra Bloqueado ");
+    }
+  } catch (error) {
+    next(error);
   }
 };
 

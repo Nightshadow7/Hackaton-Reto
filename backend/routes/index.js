@@ -24,9 +24,4 @@ fs.readdirSync(__dirname).filter(async (file) => {
   }
 });
 
-/* router.get('*', (req, res) => {
-    res.status(404);
-    res.send({error: "Not found"});
-}) */
-
 export default router;
