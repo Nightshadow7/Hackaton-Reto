@@ -56,7 +56,8 @@ const Pay = () => {
       <div id="reader"> </div>
       {scanResult ? (
         <div className="result">
-          Success: <a href={"https://" + scanResult}>{scanResult}</a>
+          Success: <a href={
+            scanResult}>{scanResult}</a>
         </div>
       ) : null}
       {scanResult && (

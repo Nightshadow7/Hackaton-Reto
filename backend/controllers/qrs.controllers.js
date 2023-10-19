@@ -53,7 +53,7 @@ export const createQr = async (req, res, next) => {
         "La plantilla ó el usuario ya poseen una cuenta asociada "
       );
     }
-    console.log(usuarioDB)
+    console.log(usuarioDB);
     const newQr = new Qr({
       ...remaining,
     });
