@@ -14,7 +14,7 @@ function UserN_Cuenta() {
     localStorage.removeItem("token");
     localStorage.removeItem("nombre");
     localStorage.removeItem("userImage");
-    localStorage.removeItem("usuario");
+    localStorage.removeItem("nombreUsuario");
     navigate("/Ingreso");
   };
 

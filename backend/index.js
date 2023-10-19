@@ -7,6 +7,7 @@ import { logErrors, errorHandler, isBoomError } from "./middlewares/errorHandler
 import allRoutes from "./routes/index.js";
 import formularioRoutes from './routes/form.routes.js';
 import formularioDupliRoutes from './routes/formdupli.routes.js';
+import pagosRoutes from "./routes/pagos.routes.js";
 
 dotenv.config();
 const port = process.env.PORT || 5000;
@@ -27,6 +28,8 @@ mongooseConnection();
 app.use('/api/formulario', formularioRoutes);
 app.use('/api/formulario/temp', formularioDupliRoutes);
 app.use('/api', allRoutes)
+app.use("/api/pagos", pagosRoutes);
+
 // Manejo de errores
 app.use(logErrors);
 app.use(isBoomError);

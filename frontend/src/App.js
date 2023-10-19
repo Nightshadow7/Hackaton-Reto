@@ -11,7 +11,7 @@ import QRsDisponibles from './components/QRsDisponibles';
 import Formulario from './components/Formulario';
 import AdminDashboard from './components/AdminDashboard';
 import Pagos from './components/Pagos';
-
+import SaldoComponent from './components/Saldo';
 
 function isUserLoggedIn() {
   const token = localStorage.getItem('token');
@@ -40,6 +40,7 @@ function App() {
         <Route path="/Formulario" element={<Formulario />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
         <Route path="/pagos" element={<Pagos />} />
+        <Route path="/Saldo" element={<SaldoComponent />} />
       </Routes>
     </BrowserRouter>
   );

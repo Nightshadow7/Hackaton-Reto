@@ -275,3 +275,46 @@ export const deleteUsuario = async (req, res, next) => {
     next(err);
   }
 };
+export const procesarPago = async (req, res, next) => {
+  try {
+    const { numeroCuenta, saldo, _id } = req.body;
+
+    // Valida que la cantidad a pagar sea un número positivo
+    if (isNaN(saldo) || parseFloat(saldo) <= 0) {
+      throw boom.badRequest("La cantidad a pagar debe ser mayor que cero.");
+    }
+
+    // Encuentra la cuenta de ahorro por su _id
+    const oid = new ObjectId(_id);
+    const user = await Usuario.findOne({ "cuentasAhorro._id": oid });
+
+    if (!user) {
+      throw boom.notFound("Usuario no encontrado");
+    }
+
+    // Encuentra la cuenta de ahorro en la lista de cuentas del usuario
+    const account = user.cuentasAhorro.find(
+      (cuenta) => cuenta._id.equals(oid)
+    );
+
+    if (!account) {
+      throw boom.notFound("Cuenta de ahorro no encontrada");
+    }
+
+    // Valida si el saldo es suficiente para realizar el pago
+    if (account.saldo < saldo) {
+      throw boom.badRequest("Saldo insuficiente para realizar el pago.");
+    }
+
+    // Actualiza el saldo de la cuenta después de realizar el pago
+    account.saldo -= parseFloat(saldo);
+
+    // Guarda el usuario actualizado en la base de datos
+    await user.save();
+
+    // Envía una respuesta de éxito
+    res.status(200).json({ message: "Pago procesado con éxito", user });
+  } catch (error) {
+    next(error);
+  }
+};
