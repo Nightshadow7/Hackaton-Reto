@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, Outlet} from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './Formulario.css';
 
 function Formulario() {
@@ -16,10 +15,12 @@ function Formulario() {
       .catch((error) => {
         console.error('Error al obtener los datos del formulario', error);
       });
+      console.log(Outlet);
   }, []);
 
   return (
     <div>
+      
       <button
             className="qr-volver-btn"
             onClick={() => navigate("/codigos-qr")}
@@ -29,16 +30,18 @@ function Formulario() {
       {data.map((documento, index) => (
         <div key={index} className="formulario">
           {console.log(documento)}
-          <Link to={`/editar-formulario/${index + 1}`}>
+          <Link to={`/formulario/${index + 1}`} state={{documento}}>
             <h2>{documento.nombre}</h2>
           </Link>
         </div>
       ))}
-
       <div> 
         <button> Previsualizacion QR code </ button>
         </ div>
+    <Outlet xd="[wasaapppp]" />
+
     </div>
+      
   );
 }
 

@@ -12,7 +12,7 @@ import Formulario from './components/Formulario';
 import AdminDashboard from './components/AdminDashboard';
 import Pagos from './components/Pagos';
 import SaldoComponent from './components/Saldo';
-
+import Form from './components/sub-componets/form';
 /*
 function isUserLoggedIn() {
   const token = localStorage.getItem('token');
@@ -38,7 +38,9 @@ function App() {
         <Route path='/plantilla' element={<Plantilla />} />
         <Route path='/edit' element={<EditPlantilla />} />
         <Route path="/UserCuenta" element={<UserNCuenta />} />
-        <Route path="/Formulario" element={<Formulario />} />
+        <Route path="/Formulario" element={<Formulario />} >
+        <Route path=":slug" element={<Form />} />
+        </Route>
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
         <Route path="/pagos/:id" element={<Pagos />} />
         <Route path="/saldo" element={<SaldoComponent />} />
