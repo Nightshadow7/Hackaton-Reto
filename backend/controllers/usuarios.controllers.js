@@ -299,9 +299,6 @@ export const procesarPago = async (req, res, next) => {
       throw boom.notFound("Cuenta de ahorro no encontrada");
     }
 
-    if (account.saldo < saldo) {
-      throw boom.badRequest("Saldo insuficiente para realizar el pago.");
-    }
 
     const newSaldo = account.saldo - cantidadAPagar;
     console.log(`

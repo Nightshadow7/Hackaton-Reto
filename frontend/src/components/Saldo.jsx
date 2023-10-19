@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Saldo.css'; 
+import { useNavigate } from 'react-router-dom';
 
 function SaldoComponent() {
   const [usuario, setUsuario] = useState(null);
@@ -13,6 +14,7 @@ function SaldoComponent() {
   const [numeroCuenta, setNumeroCuenta] = useState('');
   const [saldoCuenta, setSaldoCuenta] = useState(0);
   const [idCuenta, setIdCuenta] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const nombre = localStorage.getItem('nombreUsuario');
@@ -85,6 +87,7 @@ function SaldoComponent() {
     setError('');
     const nuevaCantidad = event.target.value;
     setCantidadAPagar(nuevaCantidad);
+    
   };
   const realizarPago = () => {
     if (parseFloat(cantidadAPagar) <= 0) {
@@ -112,7 +115,9 @@ function SaldoComponent() {
           setSaldoCuentaSeleccionada(nuevoSaldo);
           setError('Pago exitoso.');
           setCantidadAPagar('');
-        })
+
+          navigate('/Ingreso');     
+           })
         .catch((error) => {
           console.error('Error al procesar el pago', error);
           setError('Error al procesar el pago.');
