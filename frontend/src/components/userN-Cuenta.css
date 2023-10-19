@@ -160,6 +160,10 @@
 }
 
 .btn-qr {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin-top: 1rem;
   background-color: lightskyblue;
   color: #fff;
@@ -168,6 +172,12 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
+
+}
+
+.btn-qr button {
+  border: none;
+  background-color: lightskyblue;
 }
 
 .logout-button{
@@ -179,6 +189,16 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button button {
+  border: none;
+  background-color: red;
+
 }
 
 .btn-qr:hover {

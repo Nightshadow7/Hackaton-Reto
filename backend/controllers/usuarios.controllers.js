@@ -275,3 +275,50 @@ export const deleteUsuario = async (req, res, next) => {
     next(err);
   }
 };
+export const procesarPago = async (req, res, next) => {
+  try {
+    const { cantidadAPagar, saldo, _id } = req.body;
+
+    if (isNaN(cantidadAPagar) || parseFloat(cantidadAPagar) <= 0) {
+      throw boom.badRequest("La cantidad a pagar debe ser mayor que cero.");
+    }
+
+    const oid = new ObjectId(_id);
+    const user = await Usuario.findOne({ "cuentasAhorro._id": oid });
+
+    if (!user) {
+      throw boom.notFound("Usuario no encontrado");
+    }
+
+    const account = user.cuentasAhorro.find(
+      (cuenta) => cuenta._id.equals(oid)
+    );
+    console.log(account);
+
+    if (!account) {
+      throw boom.notFound("Cuenta de ahorro no encontrada");
+    }
+
+    if (account.saldo < saldo) {
+      throw boom.badRequest("Saldo insuficiente para realizar el pago.");
+    }
+
+    const newSaldo = account.saldo - cantidadAPagar;
+    console.log(`
+      saldo existente: ${account.saldo}
+      saldo enviado: ${cantidadAPagar}
+      saldo nuevo: ${newSaldo}
+    `);
+    //await user.save();
+    console.log(account.saldo);
+    const updated = await Usuario.update(
+      {"cuentasAhorro.numeroCuenta": account.numeroCuenta},
+      { $set: {"cuentasAhorro.$.saldo": newSaldo} }
+    )
+    console.log(updated);
+
+    res.status(200).json({ message: "Pago procesado con éxito", user });
+  } catch (error) {
+    next(error);
+  }
+};

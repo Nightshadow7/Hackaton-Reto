@@ -1,0 +1,21 @@
+.formQR {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.formQR .titleForm {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+#root {
+    height: 100%;
+}
+
+.button-qr-code {
+    background-color: #37cc23;
+    margin: 2rem 0rem 0rem 0rem;
+    padding: 1rem;
+    border: none;
+}

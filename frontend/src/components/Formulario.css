@@ -1,3 +1,24 @@
+.formulario-container {
+  background-color: #97bc0d;
+  min-height: 100%;
+
+}
+
+.prevQR {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.prevQR button {
+  background-color: #37cc23;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 17%;
+  border: none;
+}
+
 .formulario {
     border: 2px solid #ccc;
     padding: 20px;
@@ -7,7 +28,8 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
+
   .formulario:hover {
     background-color: #e0e0e0;
   }

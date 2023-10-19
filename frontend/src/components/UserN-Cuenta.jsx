@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import image from "../resources/header.jpg";
 import "./userN-Cuenta.css";
-import axios from "axios";
 
 
-function UserN_Cuenta() {
+function UserNCuenta() {
   const [accountsData, setAccountsData] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState(null);
   const navigate = useNavigate();
@@ -14,7 +13,7 @@ function UserN_Cuenta() {
     localStorage.removeItem("token");
     localStorage.removeItem("nombre");
     localStorage.removeItem("userImage");
-    localStorage.removeItem("usuario");
+    localStorage.removeItem("nombreUsuario");
     navigate("/Ingreso");
   };
 
@@ -63,14 +62,14 @@ function UserN_Cuenta() {
           <div className="account-details">
             <h2>Account Details</h2>
             <p>Account Number: {selectedAccount.numeroCuenta}</p>
-            <p>Balance: {selectedAccount.saldo}</p>
+            <p>Balance: ${selectedAccount.saldo.toLocaleString()}</p>
           </div>
         ) : null}
         <div className="logout-button">
-          <a onClick={handleLogout}>Cerrar Sesión</a>
+          <button onClick={handleLogout} >Cerrar Sesión</button>
         </div>
         <div className="btn-qr">
-          <a onClick={navigateQr}>Códigos QR</a>
+          <button onClick={navigateQr} >Códigos QR</button>
         </div>
       </div>
       <div className="account-list-scroll">
@@ -97,4 +96,4 @@ function UserN_Cuenta() {
   );
 }
 
-export default UserN_Cuenta;
+export default UserNCuenta;
