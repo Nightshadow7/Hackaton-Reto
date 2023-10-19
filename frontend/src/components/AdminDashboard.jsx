@@ -41,7 +41,7 @@ export default function AdminDashboard() {
         </div>
         <div className="bloqueo">
           <form className="busqueda">
-            <img src={lupa} className="lupa" />
+            <img src={lupa} className="lupa" alt="lupa" />
           <input type="number" className="input" placeholder="Numero de identidad"/>
           <button type="submit" className="submitSave">Buscar</button>
           </form>

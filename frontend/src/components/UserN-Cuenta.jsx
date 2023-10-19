@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import image from "../resources/header.jpg";
 import "./userN-Cuenta.css";
-import axios from "axios";
 
 
-function UserN_Cuenta() {
+function UserNCuenta() {
   const [accountsData, setAccountsData] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState(null);
   const navigate = useNavigate();
@@ -72,10 +71,10 @@ function UserN_Cuenta() {
           </div>
         ) : null}
         <div className="logout-button">
-          <a onClick={handleLogout}>Cerrar Sesión</a>
+          <a onClick={handleLogout} href="./">Cerrar Sesión</a>
         </div>
         <div className="btn-qr">
-          <a onClick={navigateQr}>Códigos QR</a>
+          <a onClick={navigateQr} href="./">Códigos QR</a>
         </div>
       </div>
       <div className="account-list-scroll">
@@ -102,4 +101,4 @@ function UserN_Cuenta() {
   );
 }
 
-export default UserN_Cuenta;
+export default UserNCuenta;

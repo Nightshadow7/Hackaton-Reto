@@ -12,7 +12,7 @@ const Pay = () => {
         height: 500,
       },
       fps: 2,
-    });
+    }, false);
 
     const success = (result) => {
       setScanResult(result);

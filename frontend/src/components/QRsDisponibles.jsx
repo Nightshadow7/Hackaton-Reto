@@ -51,7 +51,7 @@ export default function QRsDisponibles() {
             Añadir QR
           </button>
         </div>
-        {qrsPerUser == false ? (
+        {qrsPerUser === false ? (
           <h2>Este usuario no tiene QR's registrados</h2>
         ) : (
           qrsPerUser.map((el, index) => (
