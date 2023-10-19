@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, NavLink, useNavigate } from 'react-router-dom';
-import UserN_Cuenta from '../UserN-Cuenta.jsx';
+import { useNavigate } from 'react-router-dom';
 import "./header.css"
 const Header = () => {
     const navigate = useNavigate();

@@ -1,0 +1,38 @@
+.pago-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: green;
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom:  1.5rem;
+  padding: 0 2rem 0 1rem;
+}
+.input-group input {
+  padding: 0.5rem;
+}
+
+.formulario-pago {
+  width: 65vw;
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding: 4rem;
+  background-color: aliceblue;
+}
+
+.formulario-pago > * {
+  margin-bottom: 2rem;  
+}
+
+.pagos-btn {
+  background-color: green;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  margin-right: 1rem;
+  cursor: pointer;
+}

@@ -1,6 +1,4 @@
-.user-section{
-    background-color: green;
-}
+
 
 .user-logo{
     height: 50px;
@@ -9,10 +7,11 @@
     overflow: hidden;
 }
 
-.user-section{
+.userSection{
     display: flex;
     width: 50%;
     height: 100%;
+    background-color: green;
 }
 
 .user-header{

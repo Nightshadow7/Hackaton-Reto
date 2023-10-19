@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import image from "../resources/header.jpg";
 import "./userN-Cuenta.css";
-import axios from "axios";
 
 
-function UserN_Cuenta() {
+function UserNCuenta() {
   const [accountsData, setAccountsData] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState(null);
   const navigate = useNavigate();
@@ -40,23 +39,18 @@ function UserN_Cuenta() {
       <div className="user-section">
         <div className="user-header">
           <div >
-
-          <details>
-            <summary className="user-logo"> 
+            <div className="user-logo">
             <img src={image} className="userImage" alt="User" />
-            </ summary>
-          
-            </details>
+            </div>
+            
 
           </div>
           <div className="user-info">
   {localStorage.getItem("usuario") ? (
     <>
-      <h2 className="white">
-        {JSON.parse(localStorage.getItem("usuario")).rol}
-      </h2>
-      <p className="white">{JSON.parse(localStorage.getItem("usuario")).nombre}</p>
-      <p className="white">{JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
+      <h2 className="white">{JSON.parse(localStorage.getItem("usuario")).rol}</h2>
+      <p>{JSON.parse(localStorage.getItem("usuario")).nombre}</p>
+      <p>{JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
     </>
   ) : (
     <p className="white">Usuario no encontrado en el almacenamiento local</p>
@@ -72,10 +66,10 @@ function UserN_Cuenta() {
           </div>
         ) : null}
         <div className="logout-button">
-          <a onClick={handleLogout}>Cerrar Sesión</a>
+          <a onClick={handleLogout} href="./">Cerrar Sesión</a>
         </div>
         <div className="btn-qr">
-          <a onClick={navigateQr}>Códigos QR</a>
+          <a onClick={navigateQr} href="./">Códigos QR</a>
         </div>
       </div>
       <div className="account-list-scroll">
@@ -102,4 +96,4 @@ function UserN_Cuenta() {
   );
 }
 
-export default UserN_Cuenta;
+export default UserNCuenta;

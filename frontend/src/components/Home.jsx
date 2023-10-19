@@ -11,7 +11,7 @@ function Home() {
                 <h1 className="welcome">Bienvenidos</h1>
                 </div>
                 <div className="contImg">
-                <img src={image} className="bot"/>
+                <img src={image} alt="bot" className="bot"/>
                 </div>
             </div>
         </div>

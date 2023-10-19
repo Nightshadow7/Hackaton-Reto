@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import "./Pay.css"; 
 
 const Pay = () => {
   const [scanResult, setScanResult] = useState(null);
-
+  const navigate = useNavigate();
   const startScanner = async () => {
     const scanner = new Html5QrcodeScanner("reader", {
       qrbox: {
@@ -12,7 +13,7 @@ const Pay = () => {
         height: 500,
       },
       fps: 2,
-    });
+    }, false);
 
     const success = (result) => {
       setScanResult(result);
@@ -39,8 +40,18 @@ const Pay = () => {
     startScanner();
   }, []);
 
+  const NavigateHome = () => {
+    navigate("/");
+  };
+
   return (
+    
     <div className="container">
+      <div className="exit">
+          <h1 className="x" onClick={NavigateHome}>
+            X
+          </h1>
+        </div>
       <h1>Escanea el código QR para hacer pagos</h1>
       <div id="reader"> </div>
       {scanResult ? (

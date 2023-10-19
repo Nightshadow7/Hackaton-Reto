@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import UserN_Cuenta from './components/UserN-Cuenta';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import UserNCuenta from './components/UserN-Cuenta';
 import Ingreso from './components/Ingreso.jsx';
 import Home from './components/Home.jsx';
 import Plantilla from './components/Plantilla';
@@ -11,8 +11,13 @@ import QRsDisponibles from './components/QRsDisponibles';
 import Formulario from './components/Formulario';
 import AdminDashboard from './components/AdminDashboard';
 import Pagos from './components/Pagos';
+<<<<<<< HEAD
 import SaldoComponent from './components/Saldo';
 
+=======
+
+/*
+>>>>>>> 4fa80ac28fc0133400fa278da960bab64c4c7b70
 function isUserLoggedIn() {
   const token = localStorage.getItem('token');
   return !!token; 
@@ -24,7 +29,7 @@ function ProtectedRoute({ element, path }) {
   } else {
     return <Navigate to="/UserCuenta" />;
   }
-}
+}*/
 
 function App() {
   return (
@@ -36,11 +41,15 @@ function App() {
         <Route path='/codigos-qr' element={<QRsDisponibles />} />
         <Route path='/plantilla' element={<Plantilla />} />
         <Route path='/edit' element={<EditPlantilla />} />
-        <Route path="/UserCuenta" element={<UserN_Cuenta />} />
+        <Route path="/UserCuenta" element={<UserNCuenta />} />
         <Route path="/Formulario" element={<Formulario />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
+<<<<<<< HEAD
         <Route path="/pagos" element={<Pagos />} />
         <Route path="/Saldo" element={<SaldoComponent />} />
+=======
+        <Route path="/pagos/:id" element={<Pagos />} />
+>>>>>>> 4fa80ac28fc0133400fa278da960bab64c4c7b70
       </Routes>
     </BrowserRouter>
   );
