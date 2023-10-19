@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import image from "../resources/header.jpg";
 import "./userN-Cuenta.css";
 
@@ -66,10 +66,10 @@ function UserNCuenta() {
           </div>
         ) : null}
         <div className="logout-button">
-          <a onClick={handleLogout} href="./">Cerrar Sesión</a>
+          <button onClick={handleLogout} >Cerrar Sesión</button>
         </div>
         <div className="btn-qr">
-          <a onClick={navigateQr} href="./">Códigos QR</a>
+          <button onClick={navigateQr} >Códigos QR</button>
         </div>
       </div>
       <div className="account-list-scroll">

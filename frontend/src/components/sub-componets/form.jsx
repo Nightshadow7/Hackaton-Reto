@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { useLocation } from 'react-router-dom';
+import './form.css'
 const Form = () => {    
     let {state} = useLocation();
     const [datos, setDatos] = useState({});
@@ -29,17 +30,18 @@ const Form = () => {
 
     return (
         <>
-        <div>
-            <label>{state.documento.nombre}</label>
+        <div className="formQR">
+            <label className="titleForm">{state.documento.nombre}</label>
             {state.documento.campos.map((e)=> {
                return( <>
                 <label>{e.titulo}</label>
                 <input onChange={inputsHanlder} id={e.titulo} value={datos[[e.titulo]]} type={e.tipo} />
-                </>);
+                </>
+                );
                 })
 
             }
-            <button type="submit"> Crear QR Code </button>
+            <button className="button-qr-code"> Crear QR Code </button>
         </div>
         </>
     );

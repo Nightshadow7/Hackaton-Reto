@@ -19,7 +19,7 @@ function Formulario() {
   }, []);
 
   return (
-    <div>
+    <div className='formulario-container'>
       
       <button
             className="qr-volver-btn"
@@ -35,10 +35,10 @@ function Formulario() {
           </Link>
         </div>
       ))}
-      <div> 
+      <div className='prevQR'> 
         <button> Previsualizacion QR code </ button>
-        </ div>
-    <Outlet xd="[wasaapppp]" />
+      </ div>
+    <Outlet  />
 
     </div>
       
