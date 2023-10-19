@@ -106,6 +106,8 @@ function SaldoComponent() {
           setSaldoCuentaSeleccionada(nuevoSaldo);
           setError('Pago exitoso.');
           setCantidadAPagar('');
+
+          
         })
         .catch((error) => {
           console.error('Error al procesar el pago', error);

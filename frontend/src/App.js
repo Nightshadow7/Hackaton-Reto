@@ -11,13 +11,9 @@ import QRsDisponibles from './components/QRsDisponibles';
 import Formulario from './components/Formulario';
 import AdminDashboard from './components/AdminDashboard';
 import Pagos from './components/Pagos';
-<<<<<<< HEAD
 import SaldoComponent from './components/Saldo';
 
-=======
-
 /*
->>>>>>> 4fa80ac28fc0133400fa278da960bab64c4c7b70
 function isUserLoggedIn() {
   const token = localStorage.getItem('token');
   return !!token; 
@@ -44,12 +40,8 @@ function App() {
         <Route path="/UserCuenta" element={<UserNCuenta />} />
         <Route path="/Formulario" element={<Formulario />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
-<<<<<<< HEAD
-        <Route path="/pagos" element={<Pagos />} />
-        <Route path="/Saldo" element={<SaldoComponent />} />
-=======
         <Route path="/pagos/:id" element={<Pagos />} />
->>>>>>> 4fa80ac28fc0133400fa278da960bab64c4c7b70
+        <Route path="/saldo" element={<SaldoComponent />} />
       </Routes>
     </BrowserRouter>
   );
