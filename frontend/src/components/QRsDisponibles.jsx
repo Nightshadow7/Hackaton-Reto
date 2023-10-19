@@ -3,24 +3,34 @@ import { useNavigate } from "react-router-dom";
 import { saveAs } from "file-saver";
 import QrScanner from "qr-scanner";
 import QRItem from "./sub-componets/QRItem";
-import "./qRsDisponibles.css";
 import axios from "axios";
+import clipboard from "clipboardy";
+import Swal from "sweetalert2";
+import "./QRsDisponibles.css";
 
 export default function QRsDisponibles() {
   const navigate = useNavigate();
   const [qrsPerUser, setQrsPerUser] = useState([]);
   const [qrViewer, setQrViewer] = useState("");
-  const [linkPago, setLinkPago] = useState("")
+  const [linkPago, setLinkPago] = useState("");
 
   const downloadImg = (img) => {
     saveAs(img, "qr-code.jpg");
   };
-  const getLink = (img) => {
-    QrScanner.scanImage(img)
-    .then(result => setLinkPago(result));
-    const newLink = linkPago.split('http://localhost:3000').pop();
+  const navigateToLink = (img) => {
+    QrScanner.scanImage(img).then((result) => setLinkPago(result));
+    const newLink = linkPago.split("http://localhost:3000").pop();
     setLinkPago(newLink);
     navigate(`${newLink}`);
+  };
+  const copyLinkToClipboard = (img) => {
+    QrScanner.scanImage(img).then((result) => setLinkPago(result));
+    clipboard.write(linkPago);
+    Swal.fire(
+      'Link copiado al portapapeles!',
+      'HECHO',
+      'success'
+    )
   }
 
   useEffect(() => {
@@ -66,12 +76,14 @@ export default function QRsDisponibles() {
           ))
         )}
       </div>
-      <div className="crear-qr">
+      <div className="qr-viewer">
         <h2>Visualizador de QR's</h2>
-        <img src={qrViewer} alt="" />
-        {qrViewer ? ( <>
-          <button onClick={() => downloadImg(qrViewer)}>Descargar!</button>
-          <button onClick={() => getLink(qrViewer)}>Link de pago</button> </>
+        <img onClick={() => navigateToLink(qrViewer)} src={qrViewer} alt="" />
+        {qrViewer ? (
+          <div className="qr-viewer-buttons">
+            <button onClick={() => downloadImg(qrViewer)}>Descargar!</button>
+            <button onClick={() => copyLinkToClipboard(qrViewer)}>Link de pago</button>{" "}
+          </div>
         ) : (
           ""
         )}

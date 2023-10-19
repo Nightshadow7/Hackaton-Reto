@@ -23,9 +23,9 @@ export const getAll = async (req, res, next) => {
 export const getOne = async (req, res, next) => {
   try {
     const oid = req.params.id;
-    const QrData = await Qr.findById({ _id: oid });
+    const QrData = await Qr.findById({ _id: oid }).populate('plantilla usuario');
     if (!QrData) throw boom.notFound("Qr ID no encontrado en la base de datos");
-    res.status(200).json(User);
+    res.status(200).json(QrData);
   } catch (err) {
     next(err);
   };

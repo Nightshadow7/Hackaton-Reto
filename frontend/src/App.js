@@ -39,7 +39,7 @@ function App() {
         <Route path="/UserCuenta" element={<UserNCuenta />} />
         <Route path="/Formulario" element={<Formulario />} />
         <Route path="/AdminDashboard" element={<AdminDashboard />} />
-        <Route path="/pagos" element={<Pagos />} />
+        <Route path="/pagos/:id" element={<Pagos />} />
       </Routes>
     </BrowserRouter>
   );

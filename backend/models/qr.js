@@ -4,7 +4,7 @@ import bcryptjs from "bcryptjs";
 const QrSchema = new Schema({
   plantilla: {
     type: Schema.Types.ObjectId,
-    ref: "plantillas",
+    ref: "formularios",
     required: true,
   },
   nombre: {
