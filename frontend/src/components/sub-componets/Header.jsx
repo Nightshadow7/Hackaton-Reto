@@ -6,7 +6,6 @@ const Header = () => {
     const navigate = useNavigate();
     return (
         <>
-            {/* <BrowserRouter> */}
             <div className='header' >
 
             <nav>
@@ -16,15 +15,6 @@ const Header = () => {
                 </ul>
             </nav>
             </div>
-
-            {/* <Routes>
-                <Route path='/login' element={<Login />} />
-                <Route path='/pagar' element={<UserN_Cuenta />} />
-
-            </Routes> */}
-
-            {/* </BrowserRouter> */}
-
         </>
     );
 

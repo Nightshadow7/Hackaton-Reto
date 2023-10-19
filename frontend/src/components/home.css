@@ -46,8 +46,8 @@
 
     .bienvenido {
         height: 20%;
+        width: 100%;
         display: flex;
-        justify-content: center;
         margin-bottom: 100px;
     }
 
@@ -56,7 +56,8 @@
         font-size: 70px;
     }
 
-    .v {
+    .contImg{
+        width: 100%;
         display: flex;
         justify-content: end;
     }

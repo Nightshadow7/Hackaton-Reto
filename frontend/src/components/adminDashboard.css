@@ -1,0 +1,198 @@
+.user-section{
+    background-color: green;
+}
+
+.user-logo{
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.user-section{
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+
+.user-header{
+    width: 50%;
+}
+
+.bottoms{
+    width: 50%;
+    
+}
+
+.bootom{
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    margin: 0 3px;
+    color: white;
+}
+
+.Csecion{
+background-color: red;
+}
+
+.Qrcodigo{
+background-color: rgb(3, 219, 3);
+}
+
+.headInfo{
+    display: flex;
+    width: 100%;
+    height: 10%;
+}
+
+.bloqueo{
+background-color:white;
+border-radius: 10px;
+padding: 10px;
+width: 100%;
+height: 90%;
+}
+
+
+.busqueda{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.lupa{
+    width: 30px;
+    margin-right: 10px;
+}
+
+.input{
+    height: 40px;
+    width: 250px;
+    background-color: rgba(240, 248, 255, 0);
+    border: none;
+    border-bottom: solid rgb(0, 0, 0);
+    margin-right: 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+.submitSave{
+    background-color: green;
+    color: white;
+    height: 35px;
+    width: 80px;
+    border-radius: 10px;
+    border: none;
+}
+
+.documento{
+    color: black;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.seccionUserDocument{
+    border: solid;
+    color: black;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.seccionUserDocument{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    
+}
+
+.inactivo{
+    font-size: 20px;
+    margin-right: 10px;
+    width: 100px;
+    background-color: red;
+    padding: 2px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.activo{
+    font-size: 20px;
+    margin-right: 10px;
+    width: 100px;
+    background-color: rgb(0, 220, 22);
+    padding: 2px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.FuntionSeccion{
+    width: 50%;
+    height: 100%;
+
+}
+
+.headerFuntions{
+    display: flex;
+    background-color: rgb(0, 195, 0);
+    height: 8%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hisMovimientos{
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color:white
+}
+
+.informacion{
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;
+    margin-left: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color:white
+}
+
+.plantillas{
+    border:solid;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: white;
+    padding-left: 20px ;
+    padding-right: 20px ;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+.hisMovimientos:hover,.informacion:hover{
+    background-color: green;
+    color: white;
+}
+
+.plantillas:hover{
+    background-color: rgb(224, 224, 224);
+}
