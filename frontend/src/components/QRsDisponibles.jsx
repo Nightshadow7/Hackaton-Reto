@@ -23,9 +23,9 @@ export default function QRsDisponibles() {
     setLinkPago(newLink);
     navigate(`${newLink}`);
   };
-  const copyLinkToClipboard = (img) => {
-    QrScanner.scanImage(img).then((result) => setLinkPago(result));
-    clipboard.write(linkPago);
+  const copyLinkToClipboard = async  (img) => {
+    let result = await QrScanner.scanImage(img);
+    clipboard.write(result);
     Swal.fire(
       'Link copiado al portapapeles!',
       'HECHO',

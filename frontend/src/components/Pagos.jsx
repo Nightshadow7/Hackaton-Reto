@@ -1,16 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useRef  } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Pagos.css";
 
 export default function Pagos() {
   const { id } = useParams();
   const [apiData, setApiData] = useState({});
+  const formData = useRef();
+  const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(e.target);
+    const form = new FormData(e.target);
+    const body = {};
+    for (const [key, value] of form.entries()) {
+      body[key] = value;
+    }
+    localStorage.setItem('payment-info', JSON.stringify(body));
+    navigate('/Saldo');
   }
 
   useEffect(() => {
@@ -31,10 +38,9 @@ export default function Pagos() {
       <div className="formulario-pago">
         <h4>Hacer consignación a {usuario.nombre}</h4>
         <h2>{plantilla.nombre}</h2>
-        <form >
+        <form ref={formData} onSubmit={(e) => handleSubmit(e)}>
           {plantilla.campos.map((element, index) => (
             <div className="input-group">
-              {console.log(element)}
               <label htmlFor={element.titulo}>{element.titulo}</label>
               <input
                 id={element.titulo}
@@ -45,8 +51,8 @@ export default function Pagos() {
               />
             </div>
           ))}
-          <button className="pagos-btn">PSE</button>
-          <button className="pagos-btn">FC</button>
+          <button type="button" className="pagos-btn">PSE</button>
+          <button type="submit" className="pagos-btn">FC</button>
         </form>
       </div>
     </div>
