@@ -86,43 +86,50 @@ function SaldoComponent() {
     const nuevaCantidad = event.target.value;
     setCantidadAPagar(nuevaCantidad);
   };
-
   const realizarPago = () => {
     if (parseFloat(cantidadAPagar) <= 0) {
+      console.log('La cantidad a pagar debe ser mayor que cero.');
       setError('La cantidad a pagar debe ser mayor que cero.');
       return;
     }
-
+  
     if (selectedAccountId && parseFloat(cantidadAPagar) <= saldo) {
+      console.log('Realizando el pago...');
+  
       axios
         .post(`http://localhost:7000/api/pagos/procesar-pago`, {
           numeroCuenta: numeroCuenta,
-          saldo: saldoCuenta,
+          saldo: saldo,
           _id: idCuenta,
           cantidadAPagar: cantidadAPagar,
         })
         .then((response) => {
+          console.log('Pago exitoso. Respuesta del servidor:', response.data);
+  
           const nuevoSaldo = response.data.user.cuentasAhorro.find(cuenta => cuenta._id === idCuenta).saldo;
+          console.log('Nuevo saldo después del pago:', nuevoSaldo);
+  
           setSaldoCuentaSeleccionada(nuevoSaldo);
           setError('Pago exitoso.');
           setCantidadAPagar('');
-
-          
         })
         .catch((error) => {
           console.error('Error al procesar el pago', error);
           setError('Error al procesar el pago.');
         });
     } else {
+      console.log('Saldo insuficiente para realizar el pago.');
       setError('Saldo insuficiente para realizar el pago.');
     }
-  };
+  }
+  
+  
 
   return (
     <div className="container my-5">
       <div className="card p-4">
         <h2 className="text-center mb-4">Bienvenido, {nombreUsuario}</h2>
-        <h4 className="mb-3">Saldo Actual: {saldo} unidades</h4>
+        <h4 className="mb-3">Saldo Actual: ${saldo.toLocaleString()}</h4>
         <div className="account-list-scroll">
           {accountsData.length > 0 ? (
             accountsData.map((account, index) => (

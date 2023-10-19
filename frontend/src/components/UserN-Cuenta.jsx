@@ -62,7 +62,7 @@ function UserNCuenta() {
           <div className="account-details">
             <h2>Account Details</h2>
             <p>Account Number: {selectedAccount.numeroCuenta}</p>
-            <p>Balance: {selectedAccount.saldo}</p>
+            <p>Balance: ${selectedAccount.saldo.toLocaleString()}</p>
           </div>
         ) : null}
         <div className="logout-button">

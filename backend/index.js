@@ -8,9 +8,10 @@ import allRoutes from "./routes/index.js";
 import formularioRoutes from './routes/form.routes.js';
 import formularioDupliRoutes from './routes/formdupli.routes.js';
 import pagosRoutes from "./routes/pagos.routes.js";
+import mongoose from 'mongoose'; 
 
 dotenv.config();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 
 const app = express();
 app.use(express.json({ limit: '50mb' }));
@@ -21,13 +22,14 @@ app.use(cors({
   optionsSuccessStatus: 200,
 }));
 
+
 mongoClientConnection();
 mongooseConnection();
 
 // Rutas de la aplicación
 app.use('/api/formulario', formularioRoutes);
 app.use('/api/formulario/temp', formularioDupliRoutes);
-app.use('/api', allRoutes)
+app.use('/api', allRoutes);
 app.use("/api/pagos", pagosRoutes);
 
 // Manejo de errores
