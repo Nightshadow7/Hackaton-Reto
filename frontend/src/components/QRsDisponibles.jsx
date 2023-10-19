@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { saveAs } from "file-saver";
 import QrScanner from "qr-scanner";
 import QRItem from "./sub-componets/QRItem";
-import "./QRsDisponibles.css";
+import "./qRsDisponibles.css";
 import axios from "axios";
 
 export default function QRsDisponibles() {

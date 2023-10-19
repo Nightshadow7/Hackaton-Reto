@@ -40,23 +40,18 @@ function UserN_Cuenta() {
       <div className="user-section">
         <div className="user-header">
           <div >
-
-          <details>
-            <summary className="user-logo"> 
+            <div className="user-logo">
             <img src={image} className="userImage" alt="User" />
-            </ summary>
-          
-            </details>
+            </div>
+            
 
           </div>
           <div className="user-info">
   {localStorage.getItem("usuario") ? (
     <>
-      <h2 className="white">
-        {JSON.parse(localStorage.getItem("usuario")).rol}
-      </h2>
-      <p className="white">{JSON.parse(localStorage.getItem("usuario")).nombre}</p>
-      <p className="white">{JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
+      <h2 className="white">{JSON.parse(localStorage.getItem("usuario")).rol}</h2>
+      <p>{JSON.parse(localStorage.getItem("usuario")).nombre}</p>
+      <p>{JSON.parse(localStorage.getItem("usuario")).numeroDocumento}</p>
     </>
   ) : (
     <p className="white">Usuario no encontrado en el almacenamiento local</p>

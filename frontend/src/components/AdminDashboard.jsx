@@ -18,9 +18,17 @@ export default function AdminDashboard() {
     }
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("nombre");
+    localStorage.removeItem("userImage");
+    localStorage.removeItem("usuario");
+    navigate("/Ingreso");
+  };
+
   return (
     <div className="user-cuenta-container">
-      <div className="user-section">
+      <div className="userSection">
         <div className="headInfo">
           <div className="user-header">
             <div>
@@ -35,7 +43,7 @@ export default function AdminDashboard() {
             </div>
           </div>
           <div className="bottoms">
-            <button className="bootom Csecion">Cerrar Sesión</button>
+            <button className="bootom Csecion" onClick={handleLogout}>Cerrar Sesión</button>
             <button className="bootom Qrcodigo">Códigos QR</button>
           </div>
         </div>
